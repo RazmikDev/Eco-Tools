@@ -41,17 +41,43 @@
   <ItemGroup>
     <Compile Include="Boxing\BoxedValuesCache.cs" />
     <Compile Include="Boxing\BoxedValuesCache`2.cs" />
+    <Compile Include="Collections\Generic\Limited\ConcurrentLimitedCollection.cs" />
+    <Compile Include="Collections\Generic\Limited\LimitedCollection.cs" />
+    <Compile Include="Collections\Generic\Limited\ThreadStaticLimitedCollection.cs" />
+    <Compile Include="Collections\Generic\Limited\UnsafeLimitedCollection.cs" />
+    <Compile Include="Collections\Generic\OrderedList.cs" />
+    <Compile Include="Objects\ObjectExtensions.cs" />
+    <Compile Include="Recycling\Collections\Concurrent\RecyclableConcurrentDictionary.cs" />
+    <Compile Include="Recycling\Collections\RecyclableDictionary.cs" />
+    <Compile Include="Recycling\Collections\RecyclableList.cs" />
+    <Compile Include="Recycling\Collections\RecyclableOrderedList.cs" />
+    <Compile Include="Recycling\Collections\RecyclableSortedList.cs" />
+    <Compile Include="Recycling\Collections\RecyclableStack.cs" />
+    <Compile Include="Recycling\DefaultRecycleFactory.cs" />
+    <Compile Include="Recycling\GenericRecycleFactory.cs" />
+    <Compile Include="Recycling\IRecyclable.cs" />
+    <Compile Include="Recycling\IRecyclableExtended.cs" />
+    <Compile Include="Recycling\IRecycleFactory.cs" />
+    <Compile Include="Recycling\Recyclable.cs" />
+    <Compile Include="Recycling\RecycleFactory.cs" />
+    <Compile Include="Recycling\RecycleFactorySettings.cs" />
+    <Compile Include="Recycling\SimpleRecyclable.cs" />
+    <Compile Include="Recycling\StoragePolicy.cs" />
+    <Compile Include="Recycling\ThreadStaticBalancedLimitedCollection.cs" />
+    <Compile Include="Recycling\ThreadStaticGroupBalancedLimitedCollection.cs" />
     <Compile Include="Reflection\Type.cs" />
     <Compile Include="Boxing\Structure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Caching\" />
-    <Folder Include="Collections\Generic\Limited\" />
     <Folder Include="Linq\" />
-    <Folder Include="Recycling\" />
     <Folder Include="Threading\" />
     <Folder Include="Time\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Recycling\Collections\RecyclingCollectonsClassDiagram.cd" />
+    <None Include="Recycling\RecyclingClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
