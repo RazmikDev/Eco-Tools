@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0405AA9F-055C-4B03-86CE-EA61D69E9F6E}</ProjectGuid>
+    <ProjectGuid>{31BBE09B-CC7E-446E-8561-41F1EB3A0508}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Eco</RootNamespace>
-    <AssemblyName>Ecore</AssemblyName>
+    <RootNamespace>Eco.Recycling</RootNamespace>
+    <AssemblyName>Eco.Recycling</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,7 +29,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -40,23 +40,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Boxing\BoxedValuesCache.cs" />
-    <Compile Include="Boxing\BoxedValuesCache`2.cs" />
-    <Compile Include="Collections\Generic\Limited\ConcurrentLimitedCollection.cs" />
-    <Compile Include="Collections\Generic\Limited\LimitedCollection.cs" />
-    <Compile Include="Collections\Generic\Limited\ThreadStaticLimitedCollection.cs" />
-    <Compile Include="Collections\Generic\Limited\UnsafeLimitedCollection.cs" />
-    <Compile Include="Collections\Generic\OrderedList.cs" />
-    <Compile Include="Objects\ObjectExtensions.cs" />
-    <Compile Include="Reflection\Type.cs" />
-    <Compile Include="Boxing\Structure.cs" />
+    <Compile Include="Collections\Concurrent\RecyclableConcurrentDictionary.cs" />
+    <Compile Include="Collections\RecyclableDictionary.cs" />
+    <Compile Include="Collections\RecyclableList.cs" />
+    <Compile Include="Collections\RecyclableOrderedList.cs" />
+    <Compile Include="Collections\RecyclableSortedList.cs" />
+    <Compile Include="Collections\RecyclableStack.cs" />
+    <Compile Include="DefaultRecycleFactory.cs" />
+    <Compile Include="GenericRecycleFactory.cs" />
+    <Compile Include="IRecyclable.cs" />
+    <Compile Include="IRecyclableExtended.cs" />
+    <Compile Include="IRecycleFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recyclable.cs" />
+    <Compile Include="RecycleFactory.cs" />
+    <Compile Include="RecycleFactorySettings.cs" />
+    <Compile Include="SimpleRecyclable.cs" />
+    <Compile Include="StoragePolicy.cs" />
+    <Compile Include="ThreadStaticBalancedLimitedCollection.cs" />
+    <Compile Include="ThreadStaticGroupBalancedLimitedCollection.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Caching\" />
-    <Folder Include="Linq\" />
-    <Folder Include="Threading\" />
-    <Folder Include="Time\" />
+    <None Include="Collections\RecyclingCollectonsClassDiagram.cd" />
+    <None Include="RecyclingClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ecore\Ecore.csproj">
+      <Project>{0405aa9f-055c-4b03-86ce-ea61d69e9f6e}</Project>
+      <Name>Ecore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

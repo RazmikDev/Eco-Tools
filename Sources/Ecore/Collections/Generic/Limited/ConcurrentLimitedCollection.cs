@@ -8,7 +8,7 @@ namespace Eco.Collections.Generic.Limited
 	/// Represent a concurrent collection that stores a limited number of items. Supports only 'insert' and 'take' operation.
 	/// </summary>
 	/// <typeparam name="T">The type of stored item.</typeparam>
-	internal class ConcurrentLimitedCollection<T> : LimitedCollection<T>
+	public class ConcurrentLimitedCollection<T> : LimitedCollection<T>
 	{
 		/// <summary>
 		/// The <see cref="ConcurrentStack{T}"/> that stores collection items.
@@ -24,7 +24,7 @@ namespace Eco.Collections.Generic.Limited
 		/// <summary>
 		/// Creates a new instance of the <see cref="ConcurrentLimitedCollection{T}"/> class.
 		/// </summary>
-		internal ConcurrentLimitedCollection()
+		public ConcurrentLimitedCollection()
 		{
 			_stack = new ConcurrentStack<T>();
 		}

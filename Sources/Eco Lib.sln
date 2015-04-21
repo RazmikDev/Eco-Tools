@@ -5,6 +5,14 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecore", "Ecore\Ecore.csproj", "{0405AA9F-055C-4B03-86CE-EA61D69E9F6E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{4EAE2749-914D-4768-91EE-72FFCBFB30C1}"
+	ProjectSection(SolutionItems) = preProject
+		..\Build\Eco.Tools.Code.nuspec = ..\Build\Eco.Tools.Code.nuspec
+		..\Build\Eco.Tools.nuspec = ..\Build\Eco.Tools.nuspec
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eco.Recycling", "Eco.Recycling\Eco.Recycling.csproj", "{31BBE09B-CC7E-446E-8561-41F1EB3A0508}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,10 @@ Global
 		{0405AA9F-055C-4B03-86CE-EA61D69E9F6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0405AA9F-055C-4B03-86CE-EA61D69E9F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0405AA9F-055C-4B03-86CE-EA61D69E9F6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31BBE09B-CC7E-446E-8561-41F1EB3A0508}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31BBE09B-CC7E-446E-8561-41F1EB3A0508}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31BBE09B-CC7E-446E-8561-41F1EB3A0508}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31BBE09B-CC7E-446E-8561-41F1EB3A0508}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

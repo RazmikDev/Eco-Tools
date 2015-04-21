@@ -62,7 +62,7 @@ namespace Eco.Recycling
 #if PERFORMANCE_DEBUG
 	RecycleFactory,
 #endif
-	IRecycleFactory where TRecyclable : class, IRecyclable
+ IRecycleFactory where TRecyclable : class, IRecyclable
 	{
 		#region Fields
 
