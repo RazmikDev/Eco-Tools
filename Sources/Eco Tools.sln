@@ -7,13 +7,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecore", "Ecore\Ecore.csproj
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{4EAE2749-914D-4768-91EE-72FFCBFB30C1}"
 	ProjectSection(SolutionItems) = preProject
-		..\Build\Eco.Tools.Code.nuspec = ..\Build\Eco.Tools.Code.nuspec
 		..\Build\Eco.Tools.Core.nuspec = ..\Build\Eco.Tools.Core.nuspec
 		..\Build\Eco.Tools.nuspec = ..\Build\Eco.Tools.nuspec
 		..\Build\Eco.Tools.Recycling.nuspec = ..\Build\Eco.Tools.Recycling.nuspec
+		..\Build\Eco.Tools.Sources.nuspec = ..\Build\Eco.Tools.Sources.nuspec
+		..\Build\nuspec.xsd = ..\Build\nuspec.xsd
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eco.Recycling", "Eco.Recycling\Eco.Recycling.csproj", "{31BBE09B-CC7E-446E-8561-41F1EB3A0508}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C2B04AF5-D42D-49B2-89A2-3AA359AF18B0}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

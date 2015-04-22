@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package >
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
 	<metadata>
 		<id>Eco.Tools</id>
 		<version>0.1.0</version>
@@ -10,9 +10,9 @@
 		<!--<releaseNotes>Summary of changes made in this release of the package.</releaseNotes>-->
 		<copyright>Copyright 2015</copyright>
 		<tags>Performance Memory Fast</tags>
+		<dependencies>
+			<dependency id="Eco.Tools.Core" version="0.1.0" />
+			<dependency id="Eco.Tools.Recycling" version="0.1.0" />
+		</dependencies>
 	</metadata>
-	<dependencies>
-  		<dependency id="Eco.Tools.Core" version="0.1.0" />
-  		<dependency id="Eco.Tools.Recycling" version="0.1.0" />
-	</dependencies>
 </package>
