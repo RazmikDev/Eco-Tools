@@ -11,7 +11,8 @@
 		<copyright>Copyright 2015</copyright>
 		<tags>Performance Memory Fast</tags>
 	</metadata>
-	<files>
-		<file src="..\Sources\Ecore\bin\Release\Ecore.dll" target="lib\net45\Ecore.dll" />
-	</files>
+	<dependencies>
+  		<dependency id="Eco.Tools.Core" version="0.1.0" />
+  		<dependency id="Eco.Tools.Recycling" version="0.1.0" />
+	</dependencies>
 </package>
