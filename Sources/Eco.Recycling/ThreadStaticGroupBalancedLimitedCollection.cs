@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using Eco.Collections.Generic.Limited;
+using Eco.Threading;
 
 namespace Eco.Recycling
 {
@@ -22,23 +23,17 @@ namespace Eco.Recycling
 		internal const Int32 BagSize = 128;
 
 		/// <summary>
-		/// The thread local storage that contains <see cref="LimitedBag"/> collection with stored items.
-		/// </summary>
-		[ThreadStatic]
-		private static Warehouse _threadLocalWarehouse;
-
-		/// <summary>
 		/// The collection of empty <see cref="LimitedBag"/> items.
 		/// </summary>
-		private static readonly ConcurrentStack<LimitedBag> EmptyBags;
+		private readonly ConcurrentStack<LimitedBag> _emptyBags;
 
 		/// <summary>
 		/// The collection of fully filled <see cref="LimitedBag"/> items.
 		/// </summary>
-		private static readonly ConcurrentStack<LimitedBag> FilledBags;
+		private readonly ConcurrentStack<LimitedBag> _filledBags;
 
 		/// <summary>
-		/// The <see cref="Int32"/> value representing a number of <see cref="LimitedBag"/> collections that are stored in <see cref="_threadLocalWarehouse"/>.
+		/// The <see cref="Int32"/> value representing a number of <see cref="LimitedBag"/> collections that are stored in each <see cref="Warehouse"/>.
 		/// </summary>
 		private Int32 _warehouseBagCapacity;
 
@@ -48,17 +43,6 @@ namespace Eco.Recycling
 		private readonly Single _commonBufferShare;
 
 		#endregion
-
-		#region Constructors
-
-		/// <summary>
-		/// Creates a type instance of the <see cref="ThreadStaticGroupBalancedLimitedCollection{T}"/> class.
-		/// </summary>
-		static ThreadStaticGroupBalancedLimitedCollection()
-		{
-			EmptyBags = new ConcurrentStack<LimitedBag>();
-			FilledBags = new ConcurrentStack<LimitedBag>();
-		}
 
 		/// <summary>
 		/// Creates a new instance of the <see cref="ThreadStaticGroupBalancedLimitedCollection{T}"/> class.
@@ -77,10 +61,11 @@ namespace Eco.Recycling
 
 			_commonBufferShare = commonBufferShare;
 
+			_emptyBags = new ConcurrentStack<LimitedBag>();
+			_filledBags = new ConcurrentStack<LimitedBag>();
+
 			Capacity = initialCapacity;
 		}
-
-		#endregion
 
 		#region Overrides of LimitedCollection<T>
 
@@ -104,7 +89,10 @@ namespace Eco.Recycling
 		{
 			get
 			{
-				return _threadLocalWarehouse == null ? 0 : _threadLocalWarehouse.Count;
+				Warehouse threadLocalWarehouse;
+				return ThreadLocalStorage<ThreadStaticGroupBalancedLimitedCollection<T>, Warehouse>.TryGetItem(this, out threadLocalWarehouse)
+					? threadLocalWarehouse.Count
+					: 0;
 			}
 		}
 
@@ -115,7 +103,7 @@ namespace Eco.Recycling
 		/// <returns>true if item is inserted successfully; otherwise, false.</returns>
 		protected override Boolean TryAdd(T item)
 		{
-			var threadStaticBags = GetCurrentThreadWarehouse();
+			var threadStaticBags = GetThreadLocalWarehouse();
 
 			// Try to put item.
 			if (threadStaticBags.TryPut(item))
@@ -123,11 +111,11 @@ namespace Eco.Recycling
 
 			// If warehouse is full try to add a new empty bag to it.
 			LimitedBag emptyLimitedBag;
-			if (!EmptyBags.TryPop(out emptyLimitedBag))
+			if (!_emptyBags.TryPop(out emptyLimitedBag))
 				emptyLimitedBag = new LimitedBag(BagSize);
 
 			var filledBag = threadStaticBags.InsertToTop(emptyLimitedBag);
-			FilledBags.Push(filledBag);
+			_filledBags.Push(filledBag);
 
 			// Try to put item again. Now all should be ok couse warehouse contains an empty bag.
 			if (threadStaticBags.TryPut(item))
@@ -143,18 +131,18 @@ namespace Eco.Recycling
 		/// <returns>true if an element was removed and returned from  successfully; otherwise, false.</returns>
 		protected override Boolean TryRemove(out T item)
 		{
-			var threadStaticBags = GetCurrentThreadWarehouse();
+			var threadStaticBags = GetThreadLocalWarehouse();
 
 			if (threadStaticBags.TryPop(out item))
 				return true;
 
 			LimitedBag filledLimitedBag;
-			if (!FilledBags.TryPop(out filledLimitedBag))
+			if (!_filledBags.TryPop(out filledLimitedBag))
 				return false;
 
 			var emptyBag = threadStaticBags.InsertToBottom(filledLimitedBag);
 			if (emptyBag != null)
-				EmptyBags.Push(emptyBag);
+				_emptyBags.Push(emptyBag);
 
 			if (threadStaticBags.TryPop(out item))
 				return true;
@@ -168,15 +156,20 @@ namespace Eco.Recycling
 		/// Gets the <see cref="Warehouse"/> related with current thread.
 		/// </summary>
 		/// <returns>The <see cref="Warehouse"/> related with current thread.</returns>
-		private Warehouse GetCurrentThreadWarehouse()
+		private Warehouse GetThreadLocalWarehouse()
 		{
-			if (_threadLocalWarehouse == null)
-				return _threadLocalWarehouse = new Warehouse(_warehouseBagCapacity);
+			Warehouse threadLocalWarehouse;
+			if (ThreadLocalStorage<ThreadStaticGroupBalancedLimitedCollection<T>, Warehouse>.TryGetItem(this, out threadLocalWarehouse))
+			{
+				if (threadLocalWarehouse.BagsCount != _warehouseBagCapacity)
+					threadLocalWarehouse.Increase(_warehouseBagCapacity);
 
-			if (_threadLocalWarehouse.BagsCount != _warehouseBagCapacity)
-				_threadLocalWarehouse.Increase(_warehouseBagCapacity);
+				return threadLocalWarehouse;
+			}
 
-			return _threadLocalWarehouse;
+			threadLocalWarehouse = new Warehouse(_warehouseBagCapacity);
+			ThreadLocalStorage<ThreadStaticGroupBalancedLimitedCollection<T>, Warehouse>.Add(this, threadLocalWarehouse);
+			return threadLocalWarehouse;
 		}
 
 		/// <summary>

@@ -5,7 +5,7 @@ namespace Eco.Reflection
 	/// <summary>
 	/// Provides properties and methods describing the generic type.
 	/// </summary>
-	/// <typeparam name="T">The type wich type instance is presented by current class.</typeparam>
+	/// <typeparam name="T">The type which type instance is presented by current class.</typeparam>
 	public static class Type<T>
 	{
 		/// <summary>

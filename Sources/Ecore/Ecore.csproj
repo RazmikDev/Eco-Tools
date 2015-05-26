@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Eco</RootNamespace>
     <AssemblyName>Ecore</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,11 +47,11 @@
     <Compile Include="Reflection\Type.cs" />
     <Compile Include="Boxing\Structure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Threading\ThreadLocalStorage`2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Caching\" />
     <Folder Include="Linq\" />
-    <Folder Include="Threading\" />
     <Folder Include="Time\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -10,7 +10,7 @@ namespace Eco.Boxing
 	public static class Structure
 	{
 		/// <summary>
-		/// Boxes provided stucture trying to avoid duplicates of boxed value.
+		/// Boxes provided structure trying to avoid duplicates of boxed value.
 		/// </summary>
 		/// <typeparam name="T">The type of the structure to be boxed.</typeparam>
 		/// <returns>The boxed structure.</returns>

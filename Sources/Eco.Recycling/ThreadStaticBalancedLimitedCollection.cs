@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using Eco.Collections.Generic.Limited;
+using Eco.Threading;
 
 namespace Eco.Recycling
 {
@@ -17,18 +17,17 @@ namespace Eco.Recycling
 		#region Fields
 
 		/// <summary>
-		/// The thread-static <see cref="Stack{T}"/> that stores collection items.
+		/// The delegate that creates new <see cref="List{T}"/>.
 		/// </summary>
-		[ThreadStatic]
-		private static List<T> _threadStaticList;
+		private static readonly Func<List<T>> ThreadLocalItemsFactoryMethod;
 
 		/// <summary>
 		/// The <see cref="ConcurrentBag{T}"/> used to share items between thread static stacks.
 		/// </summary>
-		private static readonly ConcurrentBag<T> CommonBuffer;
+		private readonly ConcurrentBag<T> _commonBuffer;
 
 		/// <summary>
-		/// The <see cref="Single"/> value between 0 and 1 that specifies a capacity investment from each thread to a common buffer.
+		/// The <see cref="float"/> value between 0 and 1 that specifies a capacity investment from each thread to a common buffer.
 		/// </summary>
 		private readonly Single _commonBufferShare;
 
@@ -39,14 +38,14 @@ namespace Eco.Recycling
 
 		#endregion
 
-		#region Constructors
+		#region
 
 		/// <summary>
-		/// Creates a type instance of the <see cref="ThreadStaticBalancedLimitedCollection{T}"/> collection.
+		/// Creates a type instance of the <see cref="ThreadStaticBalancedLimitedCollection{T}"/> class.
 		/// </summary>
 		static ThreadStaticBalancedLimitedCollection()
 		{
-			CommonBuffer = new ConcurrentBag<T>();
+			ThreadLocalItemsFactoryMethod = () => new List<T>();
 		}
 
 		/// <summary>
@@ -59,6 +58,7 @@ namespace Eco.Recycling
 			if (commonBufferShare >= 1 || commonBufferShare <= 0)
 				throw new ArgumentOutOfRangeException("commonBufferShare", @"Common buffer share value should be between 0 and 1.");
 
+			_commonBuffer = new ConcurrentBag<T>();
 			_commonBufferShare = commonBufferShare;
 		}
 
@@ -75,7 +75,10 @@ namespace Eco.Recycling
 			// Thread static list count never reaches total capacity in this collection.
 			get
 			{
-				return _threadStaticList == null ? 0 : _threadStaticList.Count;
+				Stack<T> threadLocalItems;
+				return ThreadLocalStorage<Object, Stack<T>>.TryGetItem(this, out threadLocalItems)
+					? threadLocalItems.Count
+					: 0;
 			}
 		}
 
@@ -98,15 +101,15 @@ namespace Eco.Recycling
 		protected override Boolean TryAdd(T item)
 		{
 			// First trying to save in thread related storage.
-			var threadStaticList = GetList();
-			if (threadStaticList.Count <= _perThreadCapacity)
+			var threadLocalItems = ThreadLocalStorage<Object, List<T>>.GetOrAdd(this, ThreadLocalItemsFactoryMethod);
+			if (threadLocalItems.Count <= _perThreadCapacity)
 			{
-				threadStaticList.Add(item);
+				threadLocalItems.Add(item);
 				return true;
 			}
 
 			// Save item in buffer if thread capacity is exceeded.
-			CommonBuffer.Add(item);
+			_commonBuffer.Add(item);
 			return true;
 		}
 
@@ -118,12 +121,19 @@ namespace Eco.Recycling
 		/// <remarks>Returned value depends on the thread from which method is called.</remarks>
 		protected override Boolean TryRemove(out T item)
 		{
-			if (_threadStaticList == null || _threadStaticList.Count == 0)
-				return CommonBuffer.TryTake(out item);
+			List<T> threadLocalItems;
+			if (!ThreadLocalStorage<Object, List<T>>.TryGetItem(this, out threadLocalItems))
+			{
+				item = default(T);
+				return false;
+			}
 
-			var lastItemIndex = _threadStaticList.Count - 1;
-			item = _threadStaticList[lastItemIndex];
-			_threadStaticList.RemoveAt(lastItemIndex);
+			if (threadLocalItems.Count == 0)
+				return _commonBuffer.TryTake(out item);
+
+			var lastItemIndex = threadLocalItems.Count - 1;
+			item = threadLocalItems[lastItemIndex];
+			threadLocalItems.RemoveAt(lastItemIndex);
 
 			return true;
 		}
@@ -131,14 +141,11 @@ namespace Eco.Recycling
 		#endregion
 
 		/// <summary>
-		/// Gets the <see cref="Stack{T}"/> that store collection items for the current calling thread.
+		/// Removes all items stored by the <see cref="ThreadStaticBalancedLimitedCollection{T}"/> for the current thread.
 		/// </summary>
-		/// <returns>The <see cref="Stack{T}"/> that store collection items for the current calling thread.</returns>
-		/// <remarks>Returned value depends on the thread from which method is called.</remarks>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		private List<T> GetList()
+		internal void ClearOnThread()
 		{
-			return _threadStaticList ?? (_threadStaticList = new List<T>(_perThreadCapacity));
+			ThreadLocalStorage<Object, List<T>>.TryRemove(this);
 		}
 	}
 }

@@ -1,68 +1,21 @@
-﻿#if PERFORMANCE_DEBUG
-using Kappa.Core.Diagnostics;
-#endif
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Eco.Collections.Generic.Limited;
 using Eco.Objects;
 
 #if PERFORMANCE_DEBUG
-using System.Text;
 using System.Threading;
 #endif
 
 namespace Eco.Recycling
 {
-#if PERFORMANCE_DEBUG
-	/// <summary>
-	/// Represent a base non-generic class for <see cref="RecycleFactory{TRecyclable}"/> that performs non-generic operation.
-	/// </summary>
-	public abstract class RecycleFactory
-	{
-		/// <summary>
-		/// The object that format the output
-		/// </summary>
-		protected static readonly StringFormatter OutputFormatter;
-
-		/// <summary>
-		/// The <see cref="Int32"/> value that specifies that header was already writed to output.
-		/// </summary>
-		private static Int32 _headerCounter;
-
-		/// <summary>
-		/// Initializes the <see cref="RecycleFactory{TRecyclable}"/> type.
-		/// </summary>
-		static RecycleFactory()
-		{
-			String outputFormat = "{Type}|{Efficiency,10:##0.00}|{Created,9}|{Recycled,9}|{Missed,9}|{Storage}";
-			StringFormatter.ExtractParametersList(ref outputFormat);
-
-			OutputFormatter = new StringFormatter();
-			OutputFormatter.Parse(outputFormat, Console.BufferWidth - 1, true);
-		}
-
-		/// <summary>
-		/// Gets the <see cref="Boolean"/> value indicating that this method is called first time.
-		/// </summary>
-		/// <returns>True if this method is called first time; otherwise, false.</returns>
-		protected Boolean IsFirstFinalization()
-		{
-			return Interlocked.Increment(ref _headerCounter) == 1;
-		}
-	}
-#endif
-
 	/// <summary>
 	/// Represents a factory that produces  objects and reuse them if possible to decrease memory consumption.
 	/// </summary>
 	/// <typeparam name="TRecyclable">The type of recyclable object that can be recycled by current factory.</typeparam>
 	/// <remarks>This factory is thread-safe.</remarks>
-	public abstract class RecycleFactory<TRecyclable> :
-#if PERFORMANCE_DEBUG
-	RecycleFactory,
-#endif
- IRecycleFactory where TRecyclable : class, IRecyclable
+	public abstract class RecycleFactory<TRecyclable> : IRecycleFactory where TRecyclable : class, IRecyclable
 	{
 		#region Fields
 
@@ -104,7 +57,7 @@ namespace Eco.Recycling
 			_recyclables = collection;
 
 			Capacity = RecycleFactorySettings.DefaultCapacity;
-
+			
 			Debug.Assert(Capacity > 0, "Undefined capacity for recycle factory");
 		}
 
@@ -313,43 +266,5 @@ namespace Eco.Recycling
 		}
 
 		#endregion
-
-#if PERFORMANCE_DEBUG
-
-		/// <summary>
-		/// Releases all resource of current factory.
-		/// </summary>
-		~RecycleFactory()
-		{
-			StringBuilder messageBuilder;
-			if (IsFirstFinalization())
-			{
-				Console.WriteLine(new String('-', Console.BufferWidth - 1));
-				messageBuilder = new StringBuilder();
-				OutputFormatter.Format(messageBuilder, true, "Type Name", "Efficiency", "Created", "Recycled", "Missed", "Storage Name");
-				Console.Write(messageBuilder);
-			}
-
-			if (_createdCount == 0 && _recycledCount == 0 && _missedItems == 0)
-				return;
-
-			messageBuilder = new StringBuilder();
-			OutputFormatter.Format(messageBuilder, true, typeof(TRecyclable).GetFriendlyName(), Efficiency, _createdCount, _recycledCount, _missedItems, _recyclables.GetType().Name);
-
-			Console.WriteLine(new String('-', Console.BufferWidth - 1));
-			var consoleColor = Console.ForegroundColor;
-
-			if (Efficiency < 1)
-				Console.ForegroundColor = _recycledCount == 0 ? ConsoleColor.Magenta : ConsoleColor.Red;
-			else if (Efficiency < 75)
-				Console.ForegroundColor = ConsoleColor.Yellow;
-			else
-				Console.ForegroundColor = ConsoleColor.Green;
-
-			Console.Write(messageBuilder);
-			Console.ForegroundColor = consoleColor;
-		}
-
-#endif
 	}
 }
