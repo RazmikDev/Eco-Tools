@@ -5,7 +5,7 @@ using Eco.Reflection;
 namespace Eco.Boxing
 {
 	/// <summary>
-	/// Provides set of extension methods that optimized work with structure types.
+	/// Provides set of extension methods to make manipulating with structure types much easier.
 	/// </summary>
 	public static class Structure
 	{
