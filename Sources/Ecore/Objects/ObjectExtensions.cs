@@ -8,6 +8,14 @@ namespace Eco.Objects
 	/// </summary>
 	public static class ObjectExtensions
 	{
+		/// <summary>
+		/// Determines whether the specified instances are the same instance.
+		/// </summary>
+		/// <typeparam name="TCurrent">The type of the firsts compared object.</typeparam>
+		/// <typeparam name="TOther">The type of the second compared object.</typeparam>
+		/// <param name="current">A current instance to compare.</param>
+		/// <param name="other">An other instance to compare.</param>
+		/// <returns><c>true</c> if <paramref name="current"/> are same with <paramref name="other"/>; otherwise, <c>false</c>.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Boolean ReferenceEquals<TCurrent, TOther>(this TCurrent current, TOther other)
 			where TCurrent : class // restricts comparing only reference types (if Object - value types passes with boxing)
@@ -19,10 +27,10 @@ namespace Eco.Objects
 		/// <summary>
 		/// Compares two <see cref="Object"/>s with considering possible null or boxed value.
 		/// </summary>
-		/// <param name="current">A current <see cref="Object"/> to compare.</param>
-		/// <param name="other">An other <see cref="Object"/> to compare.</param>
 		/// <typeparam name="TCurrent">The type of the firsts compared object.</typeparam>
 		/// <typeparam name="TOther">The type of the second compared object.</typeparam>
+		/// <param name="current">A current <see cref="Object"/> to compare.</param>
+		/// <param name="other">An other <see cref="Object"/> to compare.</param>
 		/// <returns><c>true</c> if <paramref name="current"/> equals to <paramref name="other"/>; otherwise, <c>false</c>.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Boolean SafeEquals<TCurrent, TOther>(this TCurrent current, TOther other)
@@ -52,8 +60,6 @@ namespace Eco.Objects
 		public static T ThrowIfNull<T>(this T argument, String argumentName = null, String message = null)
 			where T : class
 		{
-			// TODO: use ThrowIfNull method instead of classic check everywhere
-
 			if (argument != null)
 				return argument;
 
