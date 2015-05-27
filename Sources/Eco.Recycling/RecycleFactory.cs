@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 using System.Runtime.CompilerServices;
 using Eco.Collections.Generic.Limited;
 using Eco.Objects;
-
-#if PERFORMANCE_DEBUG
-using System.Threading;
-#endif
 
 namespace Eco.Recycling
 {
@@ -14,7 +11,6 @@ namespace Eco.Recycling
 	/// Represents a factory that produces  objects and reuse them if possible to decrease memory consumption.
 	/// </summary>
 	/// <typeparam name="TRecyclable">The type of recyclable object that can be recycled by current factory.</typeparam>
-	/// <remarks>This factory is thread-safe.</remarks>
 	public abstract class RecycleFactory<TRecyclable> : IRecycleFactory where TRecyclable : class, IRecyclable
 	{
 		#region Fields
@@ -24,8 +20,6 @@ namespace Eco.Recycling
 		/// Note: Stack provides most "fresh" objects and reduces working memory size.
 		/// </summary>
 		private readonly LimitedCollection<TRecyclable> _recyclables;
-
-#if PERFORMANCE_DEBUG
 
 		/// <summary>
 		/// The number of created elements.
@@ -42,7 +36,10 @@ namespace Eco.Recycling
 		/// </summary>
 		private Int32 _missedItems;
 
-#endif
+		/// <summary>
+		/// The <see cref="Boolean"/> value that indicates whether to count created and recycled items and other metrics.
+		/// </summary>
+		private Boolean _collectMetrics;
 
 		#endregion
 
@@ -57,7 +54,7 @@ namespace Eco.Recycling
 			_recyclables = collection;
 
 			Capacity = RecycleFactorySettings.DefaultCapacity;
-			
+
 			Debug.Assert(Capacity > 0, "Undefined capacity for recycle factory");
 		}
 
@@ -115,9 +112,28 @@ namespace Eco.Recycling
 			set { _recyclables.Capacity = value; }
 		}
 
-		#region Metrics
+		/// <summary>
+		/// Gets or sets the <see cref="Boolean"/> value that indicates whether to count created and recycled items and other metrics.
+		/// Affects <see cref="Efficiency"/>, <see cref="CreatedCount"/>, <see cref="RecycledCount"/> and <see cref="MissedCount"/> properties.
+		/// Metrics collection can only be turned on. Use it only to debug recycle factory efficiency. 
+		/// </summary>
+		/// <remarks>Do not turn on metrics collection in performance-critical code cause is has a small performance impact.</remarks>
+		public Boolean CollectMetrics
+		{
+			get
+			{
+				return _collectMetrics;
+			}
+			set
+			{
+				if (_collectMetrics)
+					throw new NotSupportedException("Cannot switch off metrics collection for recycle factory. Operation is not supported.");
 
-#if PERFORMANCE_DEBUG
+				_collectMetrics = value;
+			}
+		}
+
+		#region Metrics
 
 		/// <summary>
 		/// Gets the <see cref="Double"/> value indicating the ratio between the <see cref="RecycledCount"/> and amount of all items returned by current <see cref="RecycleFactory{T}"/>.
@@ -127,6 +143,9 @@ namespace Eco.Recycling
 		{
 			get
 			{
+				if (!CollectMetrics)
+					throw new InvalidOperationException("Cannot measure recycle factory efficiency. Metric counting is not enabled. Set true to 'CollectMetrics' property before accessing this property.");
+
 				var producedCount = RecycledCount + CreatedCount;
 				return producedCount == 0
 					? 0
@@ -139,7 +158,13 @@ namespace Eco.Recycling
 		/// </summary>
 		public Int32 CreatedCount
 		{
-			get { return _createdCount; }
+			get
+			{
+				if (!CollectMetrics)
+					throw new InvalidOperationException("Cannot get number of created items. Metric counting is not enabled. Set true to 'CollectMetrics' property before accessing this property.");
+
+				return _createdCount;
+			}
 		}
 
 		/// <summary>
@@ -147,7 +172,13 @@ namespace Eco.Recycling
 		/// </summary>
 		public Int32 RecycledCount
 		{
-			get { return _recycledCount; }
+			get
+			{
+				if (!CollectMetrics)
+					throw new InvalidOperationException("Cannot get number of recycled items. Metric counting is not enabled. Set true to 'CollectMetrics' property before accessing this property.");
+
+				return _recycledCount;
+			}
 		}
 
 		/// <summary>
@@ -155,10 +186,14 @@ namespace Eco.Recycling
 		/// </summary>
 		public Int32 MissedCount
 		{
-			get { return _missedItems; }
-		}
+			get
+			{
+				if (!CollectMetrics)
+					throw new InvalidOperationException("Cannot get number of missed items. Metric counting is not enabled. Set true to 'CollectMetrics' property before accessing this property.");
 
-#endif
+				return _missedItems;
+			}
+		}
 
 		/// <summary>
 		/// Gets the number of elements stored in the <see cref="RecycleFactory{T}"/> and ready for usage.
@@ -193,16 +228,16 @@ namespace Eco.Recycling
 
 			if (_recyclables.TryTake(out result))
 			{
-#if PERFORMANCE_DEBUG
-				Interlocked.Increment(ref _recycledCount);
-#endif
+				if (_collectMetrics)
+					Interlocked.Increment(ref _recycledCount);
+
 				result.Resolve();
 			}
 			else
 			{
-#if PERFORMANCE_DEBUG
-				Interlocked.Increment(ref _createdCount);
-#endif
+				if (_collectMetrics)
+					Interlocked.Increment(ref _createdCount);
+
 				result = InitializeRecyclable();
 				result.SetSourceFactory(this);
 			}
@@ -245,12 +280,16 @@ namespace Eco.Recycling
 				throw new ArgumentException(@"Source factory of recycling object not equals to current factory", "recyclable");
 
 			recyclable.Cleanup();
-#if PERFORMANCE_DEBUG
-			if (!_recyclables.TryPut(recyclable))
-				Interlocked.Increment(ref _missedItems);
-#else
-			_recyclables.TryPut(recyclable);
-#endif
+
+			if (_collectMetrics)
+			{
+				if (!_recyclables.TryPut(recyclable))
+					Interlocked.Increment(ref _missedItems);
+			}
+			else
+			{
+				_recyclables.TryPut(recyclable);
+			}
 		}
 
 		/// <summary>
