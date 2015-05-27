@@ -1,91 +1,105 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
-  <Class Name="Nptv.Common.Recycling.RecycleFactory&lt;TRecyclable&gt;">
-    <Position X="2.25" Y="4.75" Width="3.25" />
+  <Class Name="Eco.Recycling.RecycleFactory&lt;TRecyclable&gt;">
+    <Position X="3.25" Y="0.75" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>AAAgAQAAAAAAAEAAAIAAAEQCAQBgAEACAAAAEAGAAAA=</HashCode>
-      <FileName>Recycling\RecycleFactory.cs</FileName>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAEQCAQBgAEAAAAIAAAAAAAA=</HashCode>
+      <FileName>RecycleFactory.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Nptv.Common.Recycling.RecyclableExtensions">
-    <Position X="13.25" Y="0.75" Width="2.25" />
+  <Class Name="Eco.Recycling.Recyclable">
+    <Position X="11.75" Y="11.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAI=</HashCode>
-      <FileName>Recycling\RecyclableExtensions.cs</FileName>
+      <HashCode>AAgAACAAAABAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Recyclable.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Nptv.Common.Recycling.MultiTypeRecycleFactory">
-    <Position X="6.5" Y="0.75" Width="3.5" />
-    <TypeIdentifier>
-      <HashCode>AAAgEAAQAAAAAAAAEAAAAAABAAAAAEAAAAAAAgAIggA=</HashCode>
-      <FileName>Recycling\MultiTypeRecycleFactory.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Field Name="_recyclables" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="Nptv.Common.Recycling.RecycleFactorySettings">
-    <Position X="11" Y="0.75" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Recycling\RecycleFactorySettings.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Nptv.Common.Recycling.Collections.RecyclableList&lt;TItem&gt;">
-    <Position X="10.5" Y="4.75" Width="3" />
-    <TypeIdentifier>
-      <HashCode>AAAAEEACAAAoAAAAACAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Recycling\Collections\RecyclableList.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="Nptv.Common.Recycling.Collections.RecyclableDictionary&lt;TKey, TValue&gt;">
-    <Position X="6.75" Y="4.75" Width="3" />
-    <TypeIdentifier>
-      <HashCode>AAAAEEACAAAgAAAAACAAAEAAAAAAAAAAAAAQAAAAAAA=</HashCode>
-      <FileName>Recycling\Collections\RecyclableDictionary.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="Nptv.Common.Recycling.Collections.RecyclableSortedList&lt;TKey, TValue&gt;">
-    <Position X="14" Y="4.75" Width="3" />
-    <TypeIdentifier>
-      <HashCode>AAAAEEACAAAgAAAAACAAAEAAAAAAAAAAAAAQAAAAAAA=</HashCode>
-      <FileName>Recycling\Collections\RecyclableSortedList.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="Nptv.Common.Recycling.DefaultRecycleFactory&lt;TRecyclable&gt;">
-    <Position X="0.75" Y="9.75" Width="2.75" />
+  <Class Name="Eco.Recycling.DefaultRecycleFactory&lt;TRecyclable&gt;">
+    <Position X="1.5" Y="4.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Recycling\DefaultRecycleFactory.cs</FileName>
+      <FileName>DefaultRecycleFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Nptv.Common.Recycling.GenericRecycleFactory&lt;TRecyclable&gt;">
-    <Position X="4.25" Y="9.75" Width="2.75" />
+  <Class Name="Eco.Recycling.GenericRecycleFactory&lt;TRecyclable&gt;">
+    <Position X="5" Y="4.75" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAACAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Recycling\GenericRecycleFactory.cs</FileName>
+      <FileName>GenericRecycleFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="Nptv.Common.Recycling.IRecyclable">
-    <Position X="4" Y="1.75" Width="2" />
+  <Class Name="Eco.Recycling.RecycleFactorySettings">
+    <Position X="2.75" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RecycleFactorySettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Eco.Recycling.ThreadStaticBalancedLimitedCollection&lt;T&gt;">
+    <Position X="14.75" Y="0.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAABAQAAAAAAAASAAAAAQAAAAAAAgEAAABA=</HashCode>
+      <FileName>ThreadStaticBalancedLimitedCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Eco.Recycling.ThreadStaticGroupBalancedLimitedCollection&lt;T&gt;">
+    <Position X="21.5" Y="0.5" Width="3.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Eco.Recycling.ThreadStaticGroupBalancedLimitedCollection&lt;T&gt;.Warehouse">
+        <TypeIdentifier>
+          <NewMemberFileName>ThreadStaticGroupBalancedLimitedCollection.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Eco.Recycling.ThreadStaticGroupBalancedLimitedCollection&lt;T&gt;.LimitedBag">
+        <TypeIdentifier>
+          <NewMemberFileName>ThreadStaticGroupBalancedLimitedCollection.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAASIAAAAQABQAEAAAAAAQBA=</HashCode>
+      <FileName>ThreadStaticGroupBalancedLimitedCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Eco.Recycling.SimpleRecyclable">
+    <Position X="10.25" Y="6" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACkEACAAIgAAAQADAAAEAAgAAAAAAEAACAAAgAAAA=</HashCode>
+      <FileName>SimpleRecyclable.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Eco.Recycling.IRecyclable">
+    <Position X="10.25" Y="0.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAAAAACAAAAEAAAAAAAAAAAAAAAAAAAEAEAAAAA=</HashCode>
-      <FileName>Recycling\IRecyclable.cs</FileName>
+      <FileName>IRecyclable.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="SourceFactory" />
-    </ShowAsAssociation>
   </Interface>
-  <Interface Name="Nptv.Common.Recycling.IRecycleFactory">
-    <Position X="0.5" Y="0.75" Width="1.5" />
+  <Interface Name="Eco.Recycling.IRecyclableExtended">
+    <Position X="10.5" Y="3.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAABAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Recycling\IRecycleFactory.cs</FileName>
+      <HashCode>AAAAAAAABAIAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>IRecyclableExtended.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Interface Name="Eco.Recycling.IRecycleFactory">
+    <Position X="0.5" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAABAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>IRecycleFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Eco.Recycling.StoragePolicy">
+    <Position X="0.5" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABAAAAAAAAIACAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StoragePolicy.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
