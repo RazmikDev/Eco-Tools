@@ -1,2 +1,5 @@
-# Eco-Tools
-Eco Tools helps to develop high-performance applications on .NET Framework
+# Eco ToolsHelps to develop high-performance applications on .NET Framework
+----------
+# Hot to get?Nuget-package (will be available soon).
+----------
+#Features## Performance & Memory### Global cache for boxed valuesStructures in .NET Framework is a great and fast thing. But sometimes they can сause performance problems when they, for example, are passed to methods that accepts only Object or interface parameters.Boxing is a big problem of high-loaded applications cause it produces a lot of objects in heap that then will be collected by GC. Unintended load to GC leaves less CPU resources for payload.Sometimes it's very complicated to avoid unnesessary boxing when using external libraries or heavily modifiable code.`BoxedValuesCache` class provides a global cache of boxed structure. Each structure that needs to be boxed multiple times can be boxed just once which increadibly decrease GC load and memory concumption in some cases.Also the `Box()` extension method is available for all structures that implements `IEquatable<T>` interface.```Int32 x = 25;Object xBoxed1 = x.Box();Object xBoxed2 = x.Box();(xBoxed1 == xBoxed2) // is true```<!--### Recycling Factories ## Tools & Extensions ### Limited collections### Thread-local storage### Time extensions-->
