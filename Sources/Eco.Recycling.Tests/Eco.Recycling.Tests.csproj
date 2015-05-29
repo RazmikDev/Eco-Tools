@@ -51,15 +51,25 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="GenericRecycleFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecycleFactoryTests.cs" />
+    <Compile Include="Testers\DefaultRecycleFactoryTester.cs" />
+    <Compile Include="Testers\GenericRecycleFactoryTester.cs" />
+    <Compile Include="Testers\RecycleFactoryTester.cs" />
+    <Compile Include="DefaultRecycleFactoryTests.cs" />
+    <Compile Include="TestRecyclable.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Eco.Recycling\Eco.Recycling.csproj">
       <Project>{31BBE09B-CC7E-446E-8561-41F1EB3A0508}</Project>
       <Name>Eco.Recycling</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ecore\Ecore.csproj">
+      <Project>{0405aa9f-055c-4b03-86ce-ea61d69e9f6e}</Project>
+      <Name>Ecore</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
