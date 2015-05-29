@@ -75,8 +75,8 @@ namespace Eco.Recycling
 			// Thread static list count never reaches total capacity in this collection.
 			get
 			{
-				Stack<T> threadLocalItems;
-				return ThreadLocalStorage<Object, Stack<T>>.TryGetItem(this, out threadLocalItems)
+				List<T> threadLocalItems;
+				return ThreadLocalStorage<Object, List<T>>.TryGetItem(this, out threadLocalItems)
 					? threadLocalItems.Count
 					: 0;
 			}
