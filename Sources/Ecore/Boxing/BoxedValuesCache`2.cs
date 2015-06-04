@@ -33,7 +33,7 @@ namespace Eco.Boxing
 		#endregion
 
 		/// <summary>
-		/// Creates a type intance of the <see cref="BoxedStructuresGlobal"/> structure.
+		/// Creates a type instance of the <see cref="BoxedStructuresGlobal"/> structure.
 		/// </summary>
 		static BoxedValuesCache()
 		{
@@ -85,7 +85,7 @@ namespace Eco.Boxing
 			boxedValue = BoxedStructuresGlobal.GetOrAdd(key, boxedValue);
 
 			// First time we adds only to global storage. Only if the same key is provided again the local storage is used populated with cached value.
-			// That means that the thread local storage is created only if initialy unknown key is provided twice. 
+			// That means that the thread local storage is created only if initially unknown key is provided twice. 
 			/*
 				if (_boxedStructuresThreadLocal == null)
 					_boxedStructuresThreadLocal = new Dictionary<String, Object>(_comparer);
