@@ -51,7 +51,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Boxing\BoxedValuesCacheTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ecore\Ecore.csproj">
+      <Project>{0405AA9F-055C-4B03-86CE-EA61D69E9F6E}</Project>
+      <Name>Ecore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
