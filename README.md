@@ -11,7 +11,7 @@ Features
 
 ### Performance & Memory
 #### Global cache for boxed values
-Structures in .NET Framework is a great and fast thing. But sometimes they can
+Value types (structures) support in .NET Framework is a great and fast thing. But sometimes structures can
 cause performance problems when they, for example, are frequently passed to
 methods that accepts only `Object` or interface parameters.
 
@@ -19,7 +19,7 @@ Frequent boxing is a big problem of high-loaded applications cause it produces a
 lot of objects in heap that then needs to be collected by GC. Unintended load to
 GC leaves less CPU resources and memory for payload. Sometimes it's very
 complicated to avoid unnecessary boxing when using external libraries or heavily
-modifiable code. For that cases using [Box()][1] and [BoxGeneric()][2] extension
+modifiable code. For such cases using [Box()][1] and [BoxGeneric()][2] extension
 methods is the best solution.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -35,20 +35,20 @@ Both `Box<T>()` and `BoxGeneric<T>()` extension methods use a multi-level boxed
 value cache implemented in `BoxedValuesCache<TKey, TValue>` class and avoid
 creating a multiple boxed instances of the same value type instance.
 
-[BoxedValuesCache\<TKey, TValue\>][3] class provides a multi-level cache of
+[BoxedValuesCache<TKey, TValue>][3] class provides a multi-level cache of
 boxed structures (`TValue`) identified by any key (`TKey`). `TKey` can be any
 type like `String` or be the same as TValue, which means that value type
-instance identifies itself its boxed value. `BoxedValuesCache<TKey, TValue>`
+instance identifies its boxed value by itself. `BoxedValuesCache<TKey, TValue>`
 tries to avoid unintended contentions for frequently requested values using
 thread-local storages.
 
-[BoxedValuesCache][4] ia almost the same as `BoxedValuesCache<TKey, TValue>`
+[BoxedValuesCache][4] is almost the same as `BoxedValuesCache<TKey, TValue>`
 with type arguments places in methods. Note that `Box()` extension method is
 available for all structures that implements `IEquatable<T>` interface.
 
 With Eco Tools each value type instance that needs to be boxed multiple times
 can be boxed just once which incredibly decrease GC load and memory consumption
-in most cases.
+in most of cases.
 
 #### Recycle Factories
 .NET Framework provides Garbage Collector that detects unused objects and
@@ -66,9 +66,12 @@ To prevent such situation we needs to reuse some object to decrease allocation s
 Eco Tools Library provides special RecycleFactory<T> base class and IRecyclable interface to implement 
 a simple object pooling mechanism.
  
-Instead of creating objects with `new` operator we request it from [`RecycleFactory<T>`][5] calling the `Create()` method.
-When object that implements [`IRecyclable`][6] interface is no longer needed we call `Free()` extension method 
+Instead of creating objects with `new` operator request it from [`RecycleFactory<T>`][5] 
+calling the `Create()` method.
+When object that implements [`IRecyclable`][6] interface is no longer needed call `Free()` extension method 
 to put it back to source `RecycleFactory<T>`.
+
+... *not finished yet* ...
 
 ### Tools & Extensions
 #### Limited collections
