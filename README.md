@@ -35,7 +35,7 @@ Both `Box<T>()` and `BoxGeneric<T>()` extension methods use a multi-level boxed
 value cache implemented in `BoxedValuesCache<TKey, TValue>` class and avoid
 creating a multiple boxed instances of the same value type instance.
 
-[BoxedValuesCache<TKey, TValue>][3] class provides a multi-level cache of
+[BoxedValuesCache\<TKey, TValue\>][3] class provides a multi-level cache of
 boxed structures (`TValue`) identified by any key (`TKey`). `TKey` can be any
 type like `String` or be the same as TValue, which means that value type
 instance identifies its boxed value by itself. `BoxedValuesCache<TKey, TValue>`
