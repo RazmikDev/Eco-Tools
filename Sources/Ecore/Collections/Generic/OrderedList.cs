@@ -30,19 +30,13 @@ namespace Eco.Collections.Generic
 		/// Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
 		/// </summary>
 		/// <returns>The number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.</returns>
-		public Int32 Count
-		{
-			get { return _innerList.Count; }
-		}
+		public Int32 Count => _innerList.Count;
 
 		/// <summary>
 		/// Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.
 		/// </summary>
 		/// <returns>true if the <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only; otherwise, false.</returns>
-		Boolean ICollection<TItem>.IsReadOnly
-		{
-			get { return false; }
-		}
+		Boolean ICollection<TItem>.IsReadOnly => false;
 
 		/// <summary>
 		/// Gets or sets the element at the specified index.
