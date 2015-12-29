@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecore", "Ecore\Ecore.csproj", "{0405AA9F-055C-4B03-86CE-EA61D69E9F6E}"
 EndProject
@@ -24,6 +24,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eco.Recycling.Tests", "Eco.Recycling.Tests\Eco.Recycling.Tests.csproj", "{6ACDFD91-8FD9-480B-93BB-8A49924E9856}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecore.Tests", "Ecore.Tests\Ecore.Tests.csproj", "{014619E3-40EB-44C9-93EC-F6F894F083B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modeling", "Modeling", "{0E48070F-98E5-4BB0-AE94-52DB6BAEA4C6}"
+	ProjectSection(SolutionItems) = preProject
+		ProjectMap.dgml = ProjectMap.dgml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
