@@ -16,7 +16,7 @@ for (var size = 4; size <= maxSize; size*=2)
 {
 #>	
 	/// <summary>
-	/// Represents a <#=size#>-cells value type array.
+	/// Represents a <#=size#>-cell value type array.
 	/// </summary>
 	/// <typeparam name="T">The type of stored item.</typeparam>
 	public struct Bunch<#=size#><T> : IEnumerable<T>

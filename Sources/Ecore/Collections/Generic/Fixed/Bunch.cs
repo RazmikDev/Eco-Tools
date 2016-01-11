@@ -6,7 +6,7 @@ namespace Eco.Collections.Generic.Fixed
 {
 	
 	/// <summary>
-	/// Represents a 4-cells value type array.
+	/// Represents a 4-cell value type array.
 	/// </summary>
 	/// <typeparam name="T">The type of stored item.</typeparam>
 	public struct Bunch4<T> : IEnumerable<T>
@@ -168,7 +168,7 @@ namespace Eco.Collections.Generic.Fixed
 	}
 	
 	/// <summary>
-	/// Represents a 8-cells value type array.
+	/// Represents a 8-cell value type array.
 	/// </summary>
 	/// <typeparam name="T">The type of stored item.</typeparam>
 	public struct Bunch8<T> : IEnumerable<T>
@@ -366,7 +366,7 @@ namespace Eco.Collections.Generic.Fixed
 	}
 	
 	/// <summary>
-	/// Represents a 16-cells value type array.
+	/// Represents a 16-cell value type array.
 	/// </summary>
 	/// <typeparam name="T">The type of stored item.</typeparam>
 	public struct Bunch16<T> : IEnumerable<T>
@@ -636,7 +636,7 @@ namespace Eco.Collections.Generic.Fixed
 	}
 	
 	/// <summary>
-	/// Represents a 32-cells value type array.
+	/// Represents a 32-cell value type array.
 	/// </summary>
 	/// <typeparam name="T">The type of stored item.</typeparam>
 	public struct Bunch32<T> : IEnumerable<T>
@@ -1050,7 +1050,7 @@ namespace Eco.Collections.Generic.Fixed
 	}
 	
 	/// <summary>
-	/// Represents a 64-cells value type array.
+	/// Represents a 64-cell value type array.
 	/// </summary>
 	/// <typeparam name="T">The type of stored item.</typeparam>
 	public struct Bunch64<T> : IEnumerable<T>
