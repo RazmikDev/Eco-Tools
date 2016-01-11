@@ -37,7 +37,7 @@ for (var fieldIndex = 0; fieldIndex < size; fieldIndex++)
 		/// <summary>
 		/// Gets the maximum size of the <see cref="Bunch<#=size#>{T}"/> collection.
 		/// </summary>
-		public static Int32 Length
+		public Int32 Length
 		{
 			get { return <#=size#>;}
 		}
@@ -140,7 +140,7 @@ for (var fieldIndex = 0; fieldIndex < size; fieldIndex++)
 			{
 				++_currentIndex;
 
-				return _currentIndex < Length;
+				return _currentIndex < _bunch.Length;
 			}
 
 			public void Reset()

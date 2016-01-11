@@ -26,7 +26,7 @@ namespace Eco.Collections.Generic.Fixed
 		/// <summary>
 		/// Gets the maximum size of the <see cref="Bunch4{T}"/> collection.
 		/// </summary>
-		public static Int32 Length
+		public Int32 Length
 		{
 			get { return 4;}
 		}
@@ -136,7 +136,7 @@ namespace Eco.Collections.Generic.Fixed
 			{
 				++_currentIndex;
 
-				return _currentIndex < Length;
+				return _currentIndex < _bunch.Length;
 			}
 
 			public void Reset()
@@ -196,7 +196,7 @@ namespace Eco.Collections.Generic.Fixed
 		/// <summary>
 		/// Gets the maximum size of the <see cref="Bunch8{T}"/> collection.
 		/// </summary>
-		public static Int32 Length
+		public Int32 Length
 		{
 			get { return 8;}
 		}
@@ -334,7 +334,7 @@ namespace Eco.Collections.Generic.Fixed
 			{
 				++_currentIndex;
 
-				return _currentIndex < Length;
+				return _currentIndex < _bunch.Length;
 			}
 
 			public void Reset()
@@ -410,7 +410,7 @@ namespace Eco.Collections.Generic.Fixed
 		/// <summary>
 		/// Gets the maximum size of the <see cref="Bunch16{T}"/> collection.
 		/// </summary>
-		public static Int32 Length
+		public Int32 Length
 		{
 			get { return 16;}
 		}
@@ -604,7 +604,7 @@ namespace Eco.Collections.Generic.Fixed
 			{
 				++_currentIndex;
 
-				return _currentIndex < Length;
+				return _currentIndex < _bunch.Length;
 			}
 
 			public void Reset()
@@ -712,7 +712,7 @@ namespace Eco.Collections.Generic.Fixed
 		/// <summary>
 		/// Gets the maximum size of the <see cref="Bunch32{T}"/> collection.
 		/// </summary>
-		public static Int32 Length
+		public Int32 Length
 		{
 			get { return 32;}
 		}
@@ -1018,7 +1018,7 @@ namespace Eco.Collections.Generic.Fixed
 			{
 				++_currentIndex;
 
-				return _currentIndex < Length;
+				return _currentIndex < _bunch.Length;
 			}
 
 			public void Reset()
@@ -1190,7 +1190,7 @@ namespace Eco.Collections.Generic.Fixed
 		/// <summary>
 		/// Gets the maximum size of the <see cref="Bunch64{T}"/> collection.
 		/// </summary>
-		public static Int32 Length
+		public Int32 Length
 		{
 			get { return 64;}
 		}
@@ -1720,7 +1720,7 @@ namespace Eco.Collections.Generic.Fixed
 			{
 				++_currentIndex;
 
-				return _currentIndex < Length;
+				return _currentIndex < _bunch.Length;
 			}
 
 			public void Reset()
