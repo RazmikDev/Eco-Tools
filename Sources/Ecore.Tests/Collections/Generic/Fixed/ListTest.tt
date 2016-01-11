@@ -1,0 +1,122 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+using System;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace Eco.Collections.Generic.Fixed
+{
+<#
+var maxSize = 64;
+for (var size = 4; size <= maxSize; size*=2) 
+{
+#>	
+	[TestClass]
+	public class List<#=size#>Test
+	{		
+		[TestMethod]
+		[ExpectedException(typeof(IndexOutOfRangeException))]
+		public void List<#=size#>_SetWithNegativeIndexTest()
+		{
+			var list = new List<#=size#><Int32>();
+			list[-1] = 1;
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(IndexOutOfRangeException))]
+		public void List<#=size#>_GetWithNegativeIndexTest()
+		{
+			var list = new List<#=size#><Int32>();
+			var temp = list[-1];
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(IndexOutOfRangeException))]
+		public void List<#=size#>_SetWithOutOfRangeIndexTest()
+		{
+			var list = new List<#=size#><Int32>();
+			list[<#=size#>] = 1;
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(IndexOutOfRangeException))]
+		public void List<#=size#>_GetWithOutOfRangeIndexTest()
+		{
+			var list = new List<#=size#><Int32>();
+			var temp = list[<#=size#>];
+		}
+
+		[TestMethod]
+		public void List<#=size#>_IndexerTest()
+		{
+			var list = new List<#=size#><Int32>();
+
+<#
+for (var index = 0; index < size; index++)
+{
+	var testValue = Int32.MaxValue/(index + 1);
+#>
+			list.Add(<#=testValue#>);
+<#
+}
+#>
+
+<#
+for (var index = 0; index < size; index++)
+{
+	var expectedValue = Int32.MaxValue/(index + 1);
+#>
+			Assert.AreEqual(<#=expectedValue#>, list[<#=index#>]);
+<#
+}
+#>
+		}
+
+		[TestMethod]
+		public void List<#=size#>_EnumerationTest()
+		{
+			var list = new List<#=size#><Int32>();
+
+<#
+for (var index = 0; index < size; index++)
+{
+	var testValue = Int32.MaxValue/(index + 1);
+#>
+			list.Add(<#=testValue#>);
+<#
+}
+#>
+
+			var index = -1;
+			foreach (var item in list)
+			{
+				++index;
+				switch(index)
+				{
+<#
+for (var index = 0; index < size; index++)
+{
+	var expectedValue = Int32.MaxValue/(index + 1);
+#>
+					case <#=index#>:
+						Assert.AreEqual(<#=expectedValue#>, item);
+						break;
+
+<#
+}
+#>
+					default:
+						Assert.Fail("Out of range enumeration");
+						break;
+				}
+			}
+		}
+	}
+<# 
+} 
+#>
+}

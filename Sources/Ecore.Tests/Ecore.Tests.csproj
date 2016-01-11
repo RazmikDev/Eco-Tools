@@ -52,6 +52,11 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Boxing\BoxedValuesCacheTest.cs" />
+    <Compile Include="Collections\Generic\Fixed\ListTest.cs">
+      <DependentUpon>ListTest.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Collections\Generic\Fixed\BunchTest.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -66,6 +71,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Collections\Generic\Fixed\ListTest.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ListTest.cs</LastGenOutput>
+    </Content>
     <Content Include="Collections\Generic\Fixed\BunchTest.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BunchTest.cs</LastGenOutput>
