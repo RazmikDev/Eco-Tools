@@ -106,12 +106,12 @@ namespace Eco.Collections.Generic.Fixed
 
 		IEnumerator<T> IEnumerable<T>.GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return GetEnumerator();
 		}
 
 		#region Enumerator
@@ -304,12 +304,12 @@ namespace Eco.Collections.Generic.Fixed
 
 		IEnumerator<T> IEnumerable<T>.GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return GetEnumerator();
 		}
 
 		#region Enumerator
@@ -574,12 +574,12 @@ namespace Eco.Collections.Generic.Fixed
 
 		IEnumerator<T> IEnumerable<T>.GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return GetEnumerator();
 		}
 
 		#region Enumerator
@@ -988,12 +988,12 @@ namespace Eco.Collections.Generic.Fixed
 
 		IEnumerator<T> IEnumerable<T>.GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return GetEnumerator();
 		}
 
 		#region Enumerator
@@ -1690,12 +1690,12 @@ namespace Eco.Collections.Generic.Fixed
 
 		IEnumerator<T> IEnumerable<T>.GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return GetEnumerator();
 		}
 
 		#region Enumerator

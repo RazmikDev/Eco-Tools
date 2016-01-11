@@ -110,12 +110,12 @@ for (var fieldIndex = 0; fieldIndex < size; fieldIndex++)
 
 		IEnumerator<T> IEnumerable<T>.GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return GetEnumerator();
 		}
 
 		#region Enumerator
