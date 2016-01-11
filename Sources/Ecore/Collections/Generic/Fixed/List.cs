@@ -31,14 +31,14 @@ namespace Eco.Collections.Generic.Fixed
 			get
 			{
 				if (index < 0 || index > LastItemIndex)
-					throw new ArgumentOutOfRangeException("index");
+					throw new IndexOutOfRangeException("index");
 
 				return _innerArray[index];
 			}
 			set
 			{
 				if (index < 0 || index > LastItemIndex)
-					throw new ArgumentOutOfRangeException("index");
+					throw new IndexOutOfRangeException("index");
 
 				_innerArray[index] = value;
 			}
@@ -191,14 +191,14 @@ namespace Eco.Collections.Generic.Fixed
 			get
 			{
 				if (index < 0 || index > LastItemIndex)
-					throw new ArgumentOutOfRangeException("index");
+					throw new IndexOutOfRangeException("index");
 
 				return _innerArray[index];
 			}
 			set
 			{
 				if (index < 0 || index > LastItemIndex)
-					throw new ArgumentOutOfRangeException("index");
+					throw new IndexOutOfRangeException("index");
 
 				_innerArray[index] = value;
 			}
@@ -351,14 +351,14 @@ namespace Eco.Collections.Generic.Fixed
 			get
 			{
 				if (index < 0 || index > LastItemIndex)
-					throw new ArgumentOutOfRangeException("index");
+					throw new IndexOutOfRangeException("index");
 
 				return _innerArray[index];
 			}
 			set
 			{
 				if (index < 0 || index > LastItemIndex)
-					throw new ArgumentOutOfRangeException("index");
+					throw new IndexOutOfRangeException("index");
 
 				_innerArray[index] = value;
 			}
@@ -511,14 +511,14 @@ namespace Eco.Collections.Generic.Fixed
 			get
 			{
 				if (index < 0 || index > LastItemIndex)
-					throw new ArgumentOutOfRangeException("index");
+					throw new IndexOutOfRangeException("index");
 
 				return _innerArray[index];
 			}
 			set
 			{
 				if (index < 0 || index > LastItemIndex)
-					throw new ArgumentOutOfRangeException("index");
+					throw new IndexOutOfRangeException("index");
 
 				_innerArray[index] = value;
 			}
@@ -671,14 +671,14 @@ namespace Eco.Collections.Generic.Fixed
 			get
 			{
 				if (index < 0 || index > LastItemIndex)
-					throw new ArgumentOutOfRangeException("index");
+					throw new IndexOutOfRangeException("index");
 
 				return _innerArray[index];
 			}
 			set
 			{
 				if (index < 0 || index > LastItemIndex)
-					throw new ArgumentOutOfRangeException("index");
+					throw new IndexOutOfRangeException("index");
 
 				_innerArray[index] = value;
 			}

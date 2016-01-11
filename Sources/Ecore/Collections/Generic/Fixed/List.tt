@@ -41,14 +41,14 @@ for (var size = 4; size <= maxSize; size*=2)
 			get
 			{
 				if (index < 0 || index > LastItemIndex)
-					throw new ArgumentOutOfRangeException("index");
+					throw new IndexOutOfRangeException("index");
 
 				return _innerArray[index];
 			}
 			set
 			{
 				if (index < 0 || index > LastItemIndex)
-					throw new ArgumentOutOfRangeException("index");
+					throw new IndexOutOfRangeException("index");
 
 				_innerArray[index] = value;
 			}
