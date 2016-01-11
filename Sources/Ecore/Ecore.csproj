@@ -71,7 +71,7 @@
     </Content>
     <Content Include="Collections\Generic\Fixed\List.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>List1.cs</LastGenOutput>
+      <LastGenOutput>List.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
