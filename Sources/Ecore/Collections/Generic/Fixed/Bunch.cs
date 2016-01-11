@@ -98,7 +98,7 @@ namespace Eco.Collections.Generic.Fixed
 		/// <summary>
 		/// Returns an enumerator that iterates through the bunch.
 		/// </summary>
-		/// <returns>A <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>	
+		/// <returns>An <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>	
 		public Enumerator GetEnumerator()
 		{
 			return new Enumerator(this);
@@ -296,7 +296,7 @@ namespace Eco.Collections.Generic.Fixed
 		/// <summary>
 		/// Returns an enumerator that iterates through the bunch.
 		/// </summary>
-		/// <returns>A <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>	
+		/// <returns>An <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>	
 		public Enumerator GetEnumerator()
 		{
 			return new Enumerator(this);
@@ -566,7 +566,7 @@ namespace Eco.Collections.Generic.Fixed
 		/// <summary>
 		/// Returns an enumerator that iterates through the bunch.
 		/// </summary>
-		/// <returns>A <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>	
+		/// <returns>An <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>	
 		public Enumerator GetEnumerator()
 		{
 			return new Enumerator(this);
@@ -980,7 +980,7 @@ namespace Eco.Collections.Generic.Fixed
 		/// <summary>
 		/// Returns an enumerator that iterates through the bunch.
 		/// </summary>
-		/// <returns>A <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>	
+		/// <returns>An <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>	
 		public Enumerator GetEnumerator()
 		{
 			return new Enumerator(this);
@@ -1682,7 +1682,7 @@ namespace Eco.Collections.Generic.Fixed
 		/// <summary>
 		/// Returns an enumerator that iterates through the bunch.
 		/// </summary>
-		/// <returns>A <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>	
+		/// <returns>An <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>	
 		public Enumerator GetEnumerator()
 		{
 			return new Enumerator(this);
