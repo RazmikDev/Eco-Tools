@@ -38,6 +38,11 @@
   <ItemGroup>
     <Compile Include="Boxing\BoxedValuesCache.cs" />
     <Compile Include="Boxing\BoxedValuesCache`2.cs" />
+    <Compile Include="Collections\Generic\Fixed\Bunch.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bunch.tt</DependentUpon>
+    </Compile>
     <Compile Include="Collections\Generic\Limited\ConcurrentLimitedCollection.cs" />
     <Compile Include="Collections\Generic\Limited\LimitedCollection.cs" />
     <Compile Include="Collections\Generic\Limited\ThreadStaticLimitedCollection.cs" />
@@ -53,7 +58,15 @@
     <Compile Include="Threading\ThreadLocalStorage`2.cs" />
     <Compile Include="Time\Time.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Collections\Generic\Fixed\Bunch.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Bunch.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
