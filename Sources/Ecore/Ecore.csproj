@@ -43,6 +43,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Bunch.tt</DependentUpon>
     </Compile>
+    <Compile Include="Collections\Generic\Fixed\List.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>List.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Collections\Generic\Fixed\OutOfCapacityException.cs" />
     <Compile Include="Collections\Generic\Limited\ConcurrentLimitedCollection.cs" />
     <Compile Include="Collections\Generic\Limited\LimitedCollection.cs" />
     <Compile Include="Collections\Generic\Limited\ThreadStaticLimitedCollection.cs" />
@@ -62,6 +68,10 @@
     <Content Include="Collections\Generic\Fixed\Bunch.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Bunch.cs</LastGenOutput>
+    </Content>
+    <Content Include="Collections\Generic\Fixed\List.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>List1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
