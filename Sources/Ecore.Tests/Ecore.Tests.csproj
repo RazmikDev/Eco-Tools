@@ -52,6 +52,11 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Boxing\BoxedValuesCacheTest.cs" />
+    <Compile Include="Collections\Generic\Fixed\BunchTest.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BunchTest.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +64,15 @@
       <Project>{0405AA9F-055C-4B03-86CE-EA61D69E9F6E}</Project>
       <Name>Ecore</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Collections\Generic\Fixed\BunchTest.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BunchTest.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
