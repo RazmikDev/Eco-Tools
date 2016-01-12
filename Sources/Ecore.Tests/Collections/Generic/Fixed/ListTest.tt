@@ -20,7 +20,7 @@ for (var size = 4; size <= maxSize; size*=2)
 	{		
 		[TestMethod]
 		[ExpectedException(typeof(IndexOutOfRangeException))]
-		public void List<#=size#>_SetWithNegativeIndexTest()
+		public void List<#=size#>_Empty_SetWithNegativeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
 			list[-1] = 1;
@@ -28,7 +28,19 @@ for (var size = 4; size <= maxSize; size*=2)
 
 		[TestMethod]
 		[ExpectedException(typeof(IndexOutOfRangeException))]
-		public void List<#=size#>_GetWithNegativeIndexTest()
+		public void List<#=size#>_Filled_SetWithNegativeIndexTest()
+		{
+			var list = new List<#=size#><Int32>();
+			
+			list.Add(1);
+			list.Add(2);
+			
+			list[-1] = 1;
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(IndexOutOfRangeException))]
+		public void List<#=size#>_Empty_GetWithNegativeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
 			var temp = list[-1];
@@ -36,7 +48,19 @@ for (var size = 4; size <= maxSize; size*=2)
 
 		[TestMethod]
 		[ExpectedException(typeof(IndexOutOfRangeException))]
-		public void List<#=size#>_SetWithOutOfRangeIndexTest()
+		public void List<#=size#>_Filled_GetWithNegativeIndexTest()
+		{
+			var list = new List<#=size#><Int32>();
+			
+			list.Add(1);
+			list.Add(2);
+
+			var temp = list[-1];
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(IndexOutOfRangeException))]
+		public void List<#=size#>_Empty_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
 			list[<#=size#>] = 1;
@@ -44,14 +68,38 @@ for (var size = 4; size <= maxSize; size*=2)
 
 		[TestMethod]
 		[ExpectedException(typeof(IndexOutOfRangeException))]
-		public void List<#=size#>_GetWithOutOfRangeIndexTest()
+		public void List<#=size#>_Filled_SetWithOutOfRangeIndexTest()
+		{
+			var list = new List<#=size#><Int32>();
+						
+			list.Add(1);
+			list.Add(2);
+
+			list[<#=size#>] = 1;
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(IndexOutOfRangeException))]
+		public void List<#=size#>_Empty_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
 			var temp = list[<#=size#>];
 		}
+		
+		[TestMethod]
+		[ExpectedException(typeof(IndexOutOfRangeException))]
+		public void List<#=size#>_Filled_GetWithOutOfRangeIndexTest()
+		{
+			var list = new List<#=size#><Int32>();
+						
+			list.Add(1);
+			list.Add(2);
+
+			var temp = list[<#=size#>];
+		}
 
 		[TestMethod]
-		public void List<#=size#>_IndexerTest()
+		public void List<#=size#>_AddTest()
 		{
 			var list = new List<#=size#><Int32>();
 
@@ -76,6 +124,116 @@ for (var index = 0; index < size; index++)
 #>
 		}
 
+<#
+var sizeHalf = size / 2 + 1;
+var bottomIndex = 0;
+var middleIndex = sizeHalf / 2;
+var topIndex = sizeHalf - 1;
+var insertIndex = -1;
+#>
+
+		[TestMethod]
+		public void List<#=size#>_InsertInTheBottomTest()
+		{
+			var list = new List<#=size#><Int32>();
+
+<#
+insertIndex = bottomIndex;
+for (var index = 0; index < sizeHalf; index++)
+{
+	var testValue = Int32.MaxValue/(index + 1);
+#>
+			list.Add(<#=testValue#>);
+<#
+}
+#>
+
+			list.Insert(<#=insertIndex#>, <#=Int32.MinValue / 2#>);
+			
+			Assert.AreEqual(<#=sizeHalf + 1#>, list.Count);
+			Assert.AreEqual(<#=Int32.MinValue / 2#>, list[<#=insertIndex#>]);			
+
+<#
+for (var index = 0; index < sizeHalf; index++)
+{
+	var actualIndex = index >= insertIndex ? index + 1 : index;
+	
+	var expectedValue = Int32.MaxValue/(index + 1);
+#>
+			Assert.AreEqual(<#=expectedValue#>, list[<#=actualIndex#>]);
+<#
+}
+#>
+		}
+
+		[TestMethod]
+		public void List<#=size#>_InsertInTheMiddleTest()
+		{
+			var list = new List<#=size#><Int32>();
+
+<#
+insertIndex = middleIndex;
+for (var index = 0; index < sizeHalf; index++)
+{
+	var testValue = Int32.MaxValue/(index + 1);
+#>
+			list.Add(<#=testValue#>);
+<#
+}
+#>
+
+			list.Insert(<#=insertIndex#>, <#=Int32.MinValue / 2#>);
+			
+			Assert.AreEqual(<#=sizeHalf + 1#>, list.Count);
+			Assert.AreEqual(<#=Int32.MinValue / 2#>, list[<#=insertIndex#>]);			
+
+<#
+for (var index = 0; index < sizeHalf; index++)
+{
+	var actualIndex = index >= insertIndex ? index + 1 : index;
+	
+	var expectedValue = Int32.MaxValue/(index + 1);
+#>
+			Assert.AreEqual(<#=expectedValue#>, list[<#=actualIndex#>]);
+<#
+}
+#>
+		}
+
+		[TestMethod]
+		public void List<#=size#>_InsertInTheTopTest()
+		{
+			var list = new List<#=size#><Int32>();
+
+<#
+insertIndex = topIndex;
+for (var index = 0; index < sizeHalf; index++)
+{
+	var testValue = Int32.MaxValue/(index + 1);
+#>
+			list.Add(<#=testValue#>);
+<#
+}
+#>
+
+			list.Insert(<#=insertIndex#>, <#=Int32.MinValue / 2#>);
+			
+			Assert.AreEqual(<#=sizeHalf + 1#>, list.Count);
+			Assert.AreEqual(<#=Int32.MinValue / 2#>, list[<#=insertIndex#>]);			
+
+<#
+for (var index = 0; index < sizeHalf; index++)
+{
+	var actualIndex = index >= insertIndex ? index + 1 : index;
+	
+	var expectedValue = Int32.MaxValue/(index + 1);
+#>
+			Assert.AreEqual(<#=expectedValue#>, list[<#=actualIndex#>]);
+<#
+}
+#>
+		}
+		
 		[TestMethod]
 		public void List<#=size#>_EnumerationTest()
 		{
