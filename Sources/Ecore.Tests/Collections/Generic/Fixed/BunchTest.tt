@@ -5,8 +5,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 using System;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Eco.Collections.Generic.Fixed
 {
@@ -15,42 +14,42 @@ var maxSize = 64;
 for (var size = 4; size <= maxSize; size*=2) 
 {
 #>	
-	[TestClass]
+	[TestFixture]
 	public class Bunch<#=size#>Test
 	{		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch<#=size#>_SetWithNegativeIndexTest()
 		{
 			var bunch = new Bunch<#=size#><Int32>();
-			bunch[-1] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => bunch[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch<#=size#>_GetWithNegativeIndexTest()
 		{
 			var bunch = new Bunch<#=size#><Int32>();
-			var temp = bunch[-1];
+
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = bunch[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch<#=size#>_SetWithOutOfRangeIndexTest()
 		{
 			var bunch = new Bunch<#=size#><Int32>();
-			bunch[<#=size#>] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => bunch[<#=size#>] = 1);	
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch<#=size#>_GetWithOutOfRangeIndexTest()
 		{
 			var bunch = new Bunch<#=size#><Int32>();
-			var temp = bunch[<#=size#>];
+						
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = bunch[<#=size#>]; });
 		}
 
-		[TestMethod]
+		[Test]
 		public void Bunch<#=size#>_IndexerTest()
 		{
 			var bunch = new Bunch<#=size#><Int32>();
@@ -76,7 +75,7 @@ for (var index = 0; index < size; index++)
 #>
 		}
 
-		[TestMethod]
+		[Test]
 		public void Bunch<#=size#>_EnumerationTest()
 		{
 			var bunch = new Bunch<#=size#><Int32>();

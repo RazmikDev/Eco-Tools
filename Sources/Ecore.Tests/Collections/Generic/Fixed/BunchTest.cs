@@ -1,46 +1,45 @@
 ﻿using System;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Eco.Collections.Generic.Fixed
 {
 	
-	[TestClass]
+	[TestFixture]
 	public class Bunch4Test
 	{		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch4_SetWithNegativeIndexTest()
 		{
 			var bunch = new Bunch4<Int32>();
-			bunch[-1] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => bunch[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch4_GetWithNegativeIndexTest()
 		{
 			var bunch = new Bunch4<Int32>();
-			var temp = bunch[-1];
+
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = bunch[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch4_SetWithOutOfRangeIndexTest()
 		{
 			var bunch = new Bunch4<Int32>();
-			bunch[4] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => bunch[4] = 1);	
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch4_GetWithOutOfRangeIndexTest()
 		{
 			var bunch = new Bunch4<Int32>();
-			var temp = bunch[4];
+						
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = bunch[4]; });
 		}
 
-		[TestMethod]
+		[Test]
 		public void Bunch4_IndexerTest()
 		{
 			var bunch = new Bunch4<Int32>();
@@ -56,7 +55,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(536870911, bunch[3]);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Bunch4_EnumerationTest()
 		{
 			var bunch = new Bunch4<Int32>();
@@ -93,42 +92,42 @@ namespace Eco.Collections.Generic.Fixed
 		}
 	}
 	
-	[TestClass]
+	[TestFixture]
 	public class Bunch8Test
 	{		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch8_SetWithNegativeIndexTest()
 		{
 			var bunch = new Bunch8<Int32>();
-			bunch[-1] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => bunch[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch8_GetWithNegativeIndexTest()
 		{
 			var bunch = new Bunch8<Int32>();
-			var temp = bunch[-1];
+
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = bunch[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch8_SetWithOutOfRangeIndexTest()
 		{
 			var bunch = new Bunch8<Int32>();
-			bunch[8] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => bunch[8] = 1);	
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch8_GetWithOutOfRangeIndexTest()
 		{
 			var bunch = new Bunch8<Int32>();
-			var temp = bunch[8];
+						
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = bunch[8]; });
 		}
 
-		[TestMethod]
+		[Test]
 		public void Bunch8_IndexerTest()
 		{
 			var bunch = new Bunch8<Int32>();
@@ -152,7 +151,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(268435455, bunch[7]);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Bunch8_EnumerationTest()
 		{
 			var bunch = new Bunch8<Int32>();
@@ -205,42 +204,42 @@ namespace Eco.Collections.Generic.Fixed
 		}
 	}
 	
-	[TestClass]
+	[TestFixture]
 	public class Bunch16Test
 	{		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch16_SetWithNegativeIndexTest()
 		{
 			var bunch = new Bunch16<Int32>();
-			bunch[-1] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => bunch[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch16_GetWithNegativeIndexTest()
 		{
 			var bunch = new Bunch16<Int32>();
-			var temp = bunch[-1];
+
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = bunch[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch16_SetWithOutOfRangeIndexTest()
 		{
 			var bunch = new Bunch16<Int32>();
-			bunch[16] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => bunch[16] = 1);	
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch16_GetWithOutOfRangeIndexTest()
 		{
 			var bunch = new Bunch16<Int32>();
-			var temp = bunch[16];
+						
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = bunch[16]; });
 		}
 
-		[TestMethod]
+		[Test]
 		public void Bunch16_IndexerTest()
 		{
 			var bunch = new Bunch16<Int32>();
@@ -280,7 +279,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(134217727, bunch[15]);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Bunch16_EnumerationTest()
 		{
 			var bunch = new Bunch16<Int32>();
@@ -365,42 +364,42 @@ namespace Eco.Collections.Generic.Fixed
 		}
 	}
 	
-	[TestClass]
+	[TestFixture]
 	public class Bunch32Test
 	{		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch32_SetWithNegativeIndexTest()
 		{
 			var bunch = new Bunch32<Int32>();
-			bunch[-1] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => bunch[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch32_GetWithNegativeIndexTest()
 		{
 			var bunch = new Bunch32<Int32>();
-			var temp = bunch[-1];
+
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = bunch[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch32_SetWithOutOfRangeIndexTest()
 		{
 			var bunch = new Bunch32<Int32>();
-			bunch[32] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => bunch[32] = 1);	
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch32_GetWithOutOfRangeIndexTest()
 		{
 			var bunch = new Bunch32<Int32>();
-			var temp = bunch[32];
+						
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = bunch[32]; });
 		}
 
-		[TestMethod]
+		[Test]
 		public void Bunch32_IndexerTest()
 		{
 			var bunch = new Bunch32<Int32>();
@@ -472,7 +471,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(67108863, bunch[31]);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Bunch32_EnumerationTest()
 		{
 			var bunch = new Bunch32<Int32>();
@@ -621,42 +620,42 @@ namespace Eco.Collections.Generic.Fixed
 		}
 	}
 	
-	[TestClass]
+	[TestFixture]
 	public class Bunch64Test
 	{		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch64_SetWithNegativeIndexTest()
 		{
 			var bunch = new Bunch64<Int32>();
-			bunch[-1] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => bunch[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch64_GetWithNegativeIndexTest()
 		{
 			var bunch = new Bunch64<Int32>();
-			var temp = bunch[-1];
+
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = bunch[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch64_SetWithOutOfRangeIndexTest()
 		{
 			var bunch = new Bunch64<Int32>();
-			bunch[64] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => bunch[64] = 1);	
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void Bunch64_GetWithOutOfRangeIndexTest()
 		{
 			var bunch = new Bunch64<Int32>();
-			var temp = bunch[64];
+						
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = bunch[64]; });
 		}
 
-		[TestMethod]
+		[Test]
 		public void Bunch64_IndexerTest()
 		{
 			var bunch = new Bunch64<Int32>();
@@ -792,7 +791,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(33554431, bunch[63]);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Bunch64_EnumerationTest()
 		{
 			var bunch = new Bunch64<Int32>();

@@ -5,8 +5,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 using System;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Eco.Collections.Generic.Fixed
 {
@@ -15,19 +14,18 @@ var maxSize = 64;
 for (var size = 4; size <= maxSize; size*=2) 
 {
 #>	
-	[TestClass]
+	[TestFixture]
 	public class List<#=size#>Test
 	{		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List<#=size#>_Empty_SetWithNegativeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
-			list[-1] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]	
 		public void List<#=size#>_Filled_SetWithNegativeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
@@ -35,19 +33,18 @@ for (var size = 4; size <= maxSize; size*=2)
 			list.Add(1);
 			list.Add(2);
 			
-			list[-1] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List<#=size#>_Empty_GetWithNegativeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
-			var temp = list[-1];
+			
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]
 		public void List<#=size#>_Filled_GetWithNegativeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
@@ -55,19 +52,17 @@ for (var size = 4; size <= maxSize; size*=2)
 			list.Add(1);
 			list.Add(2);
 
-			var temp = list[-1];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]
 		public void List<#=size#>_Empty_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
-			list[<#=size#>] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[<#=size#>] = 1);			
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List<#=size#>_Filled_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
@@ -75,19 +70,17 @@ for (var size = 4; size <= maxSize; size*=2)
 			list.Add(1);
 			list.Add(2);
 
-			list[<#=size#>] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[<#=size#>] = 1);		
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List<#=size#>_Empty_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
-			var temp = list[<#=size#>];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[<#=size#>]; });
 		}
 		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List<#=size#>_Filled_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
@@ -95,10 +88,10 @@ for (var size = 4; size <= maxSize; size*=2)
 			list.Add(1);
 			list.Add(2);
 
-			var temp = list[<#=size#>];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[<#=size#>]; });
 		}
 
-		[TestMethod]
+		[Test]
 		public void List<#=size#>_AddTest()
 		{
 			var list = new List<#=size#><Int32>();
@@ -132,7 +125,7 @@ var topIndex = sizeHalf - 1;
 var insertIndex = -1;
 #>
 
-		[TestMethod]
+		[Test]
 		public void List<#=size#>_InsertInTheBottomTest()
 		{
 			var list = new List<#=size#><Int32>();
@@ -166,7 +159,7 @@ for (var index = 0; index < sizeHalf; index++)
 #>
 		}
 
-		[TestMethod]
+		[Test]
 		public void List<#=size#>_InsertInTheMiddleTest()
 		{
 			var list = new List<#=size#><Int32>();
@@ -200,7 +193,7 @@ for (var index = 0; index < sizeHalf; index++)
 #>
 		}
 
-		[TestMethod]
+		[Test]
 		public void List<#=size#>_InsertInTheTopTest()
 		{
 			var list = new List<#=size#><Int32>();
@@ -234,7 +227,7 @@ for (var index = 0; index < sizeHalf; index++)
 #>
 		}
 		
-		[TestMethod]
+		[Test]
 		public void List<#=size#>_EnumerationTest()
 		{
 			var list = new List<#=size#><Int32>();

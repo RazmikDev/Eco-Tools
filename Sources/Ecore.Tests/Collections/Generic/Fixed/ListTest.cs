@@ -1,23 +1,21 @@
 ﻿using System;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Eco.Collections.Generic.Fixed
 {
 	
-	[TestClass]
+	[TestFixture]
 	public class List4Test
 	{		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List4_Empty_SetWithNegativeIndexTest()
 		{
 			var list = new List4<Int32>();
-			list[-1] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]	
 		public void List4_Filled_SetWithNegativeIndexTest()
 		{
 			var list = new List4<Int32>();
@@ -25,19 +23,18 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 			
-			list[-1] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List4_Empty_GetWithNegativeIndexTest()
 		{
 			var list = new List4<Int32>();
-			var temp = list[-1];
+			
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]
 		public void List4_Filled_GetWithNegativeIndexTest()
 		{
 			var list = new List4<Int32>();
@@ -45,19 +42,17 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 
-			var temp = list[-1];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]
 		public void List4_Empty_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List4<Int32>();
-			list[4] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[4] = 1);			
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List4_Filled_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List4<Int32>();
@@ -65,19 +60,17 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 
-			list[4] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[4] = 1);		
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List4_Empty_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List4<Int32>();
-			var temp = list[4];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[4]; });
 		}
 		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List4_Filled_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List4<Int32>();
@@ -85,10 +78,10 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 
-			var temp = list[4];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[4]; });
 		}
 
-		[TestMethod]
+		[Test]
 		public void List4_AddTest()
 		{
 			var list = new List4<Int32>();
@@ -105,7 +98,7 @@ namespace Eco.Collections.Generic.Fixed
 		}
 
 
-		[TestMethod]
+		[Test]
 		public void List4_InsertInTheBottomTest()
 		{
 			var list = new List4<Int32>();
@@ -124,7 +117,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(715827882, list[3]);
 		}
 
-		[TestMethod]
+		[Test]
 		public void List4_InsertInTheMiddleTest()
 		{
 			var list = new List4<Int32>();
@@ -143,7 +136,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(715827882, list[3]);
 		}
 
-		[TestMethod]
+		[Test]
 		public void List4_InsertInTheTopTest()
 		{
 			var list = new List4<Int32>();
@@ -162,7 +155,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(715827882, list[3]);
 		}
 		
-		[TestMethod]
+		[Test]
 		public void List4_EnumerationTest()
 		{
 			var list = new List4<Int32>();
@@ -202,19 +195,18 @@ namespace Eco.Collections.Generic.Fixed
 		}
 	}
 	
-	[TestClass]
+	[TestFixture]
 	public class List8Test
 	{		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List8_Empty_SetWithNegativeIndexTest()
 		{
 			var list = new List8<Int32>();
-			list[-1] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]	
 		public void List8_Filled_SetWithNegativeIndexTest()
 		{
 			var list = new List8<Int32>();
@@ -222,19 +214,18 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 			
-			list[-1] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List8_Empty_GetWithNegativeIndexTest()
 		{
 			var list = new List8<Int32>();
-			var temp = list[-1];
+			
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]
 		public void List8_Filled_GetWithNegativeIndexTest()
 		{
 			var list = new List8<Int32>();
@@ -242,19 +233,17 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 
-			var temp = list[-1];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]
 		public void List8_Empty_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List8<Int32>();
-			list[8] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[8] = 1);			
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List8_Filled_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List8<Int32>();
@@ -262,19 +251,17 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 
-			list[8] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[8] = 1);		
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List8_Empty_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List8<Int32>();
-			var temp = list[8];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[8]; });
 		}
 		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List8_Filled_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List8<Int32>();
@@ -282,10 +269,10 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 
-			var temp = list[8];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[8]; });
 		}
 
-		[TestMethod]
+		[Test]
 		public void List8_AddTest()
 		{
 			var list = new List8<Int32>();
@@ -310,7 +297,7 @@ namespace Eco.Collections.Generic.Fixed
 		}
 
 
-		[TestMethod]
+		[Test]
 		public void List8_InsertInTheBottomTest()
 		{
 			var list = new List8<Int32>();
@@ -333,7 +320,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(429496729, list[5]);
 		}
 
-		[TestMethod]
+		[Test]
 		public void List8_InsertInTheMiddleTest()
 		{
 			var list = new List8<Int32>();
@@ -356,7 +343,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(429496729, list[5]);
 		}
 
-		[TestMethod]
+		[Test]
 		public void List8_InsertInTheTopTest()
 		{
 			var list = new List8<Int32>();
@@ -379,7 +366,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(429496729, list[5]);
 		}
 		
-		[TestMethod]
+		[Test]
 		public void List8_EnumerationTest()
 		{
 			var list = new List8<Int32>();
@@ -439,19 +426,18 @@ namespace Eco.Collections.Generic.Fixed
 		}
 	}
 	
-	[TestClass]
+	[TestFixture]
 	public class List16Test
 	{		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List16_Empty_SetWithNegativeIndexTest()
 		{
 			var list = new List16<Int32>();
-			list[-1] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]	
 		public void List16_Filled_SetWithNegativeIndexTest()
 		{
 			var list = new List16<Int32>();
@@ -459,19 +445,18 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 			
-			list[-1] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List16_Empty_GetWithNegativeIndexTest()
 		{
 			var list = new List16<Int32>();
-			var temp = list[-1];
+			
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]
 		public void List16_Filled_GetWithNegativeIndexTest()
 		{
 			var list = new List16<Int32>();
@@ -479,19 +464,17 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 
-			var temp = list[-1];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]
 		public void List16_Empty_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List16<Int32>();
-			list[16] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[16] = 1);			
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List16_Filled_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List16<Int32>();
@@ -499,19 +482,17 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 
-			list[16] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[16] = 1);		
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List16_Empty_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List16<Int32>();
-			var temp = list[16];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[16]; });
 		}
 		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List16_Filled_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List16<Int32>();
@@ -519,10 +500,10 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 
-			var temp = list[16];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[16]; });
 		}
 
-		[TestMethod]
+		[Test]
 		public void List16_AddTest()
 		{
 			var list = new List16<Int32>();
@@ -563,7 +544,7 @@ namespace Eco.Collections.Generic.Fixed
 		}
 
 
-		[TestMethod]
+		[Test]
 		public void List16_InsertInTheBottomTest()
 		{
 			var list = new List16<Int32>();
@@ -594,7 +575,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(238609294, list[9]);
 		}
 
-		[TestMethod]
+		[Test]
 		public void List16_InsertInTheMiddleTest()
 		{
 			var list = new List16<Int32>();
@@ -625,7 +606,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(238609294, list[9]);
 		}
 
-		[TestMethod]
+		[Test]
 		public void List16_InsertInTheTopTest()
 		{
 			var list = new List16<Int32>();
@@ -656,7 +637,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(238609294, list[9]);
 		}
 		
-		[TestMethod]
+		[Test]
 		public void List16_EnumerationTest()
 		{
 			var list = new List16<Int32>();
@@ -756,19 +737,18 @@ namespace Eco.Collections.Generic.Fixed
 		}
 	}
 	
-	[TestClass]
+	[TestFixture]
 	public class List32Test
 	{		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List32_Empty_SetWithNegativeIndexTest()
 		{
 			var list = new List32<Int32>();
-			list[-1] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]	
 		public void List32_Filled_SetWithNegativeIndexTest()
 		{
 			var list = new List32<Int32>();
@@ -776,19 +756,18 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 			
-			list[-1] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List32_Empty_GetWithNegativeIndexTest()
 		{
 			var list = new List32<Int32>();
-			var temp = list[-1];
+			
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]
 		public void List32_Filled_GetWithNegativeIndexTest()
 		{
 			var list = new List32<Int32>();
@@ -796,19 +775,17 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 
-			var temp = list[-1];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]
 		public void List32_Empty_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List32<Int32>();
-			list[32] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[32] = 1);			
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List32_Filled_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List32<Int32>();
@@ -816,19 +793,17 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 
-			list[32] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[32] = 1);		
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List32_Empty_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List32<Int32>();
-			var temp = list[32];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[32]; });
 		}
 		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List32_Filled_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List32<Int32>();
@@ -836,10 +811,10 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 
-			var temp = list[32];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[32]; });
 		}
 
-		[TestMethod]
+		[Test]
 		public void List32_AddTest()
 		{
 			var list = new List32<Int32>();
@@ -912,7 +887,7 @@ namespace Eco.Collections.Generic.Fixed
 		}
 
 
-		[TestMethod]
+		[Test]
 		public void List32_InsertInTheBottomTest()
 		{
 			var list = new List32<Int32>();
@@ -959,7 +934,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(126322567, list[17]);
 		}
 
-		[TestMethod]
+		[Test]
 		public void List32_InsertInTheMiddleTest()
 		{
 			var list = new List32<Int32>();
@@ -1006,7 +981,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(126322567, list[17]);
 		}
 
-		[TestMethod]
+		[Test]
 		public void List32_InsertInTheTopTest()
 		{
 			var list = new List32<Int32>();
@@ -1053,7 +1028,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(126322567, list[17]);
 		}
 		
-		[TestMethod]
+		[Test]
 		public void List32_EnumerationTest()
 		{
 			var list = new List32<Int32>();
@@ -1233,19 +1208,18 @@ namespace Eco.Collections.Generic.Fixed
 		}
 	}
 	
-	[TestClass]
+	[TestFixture]
 	public class List64Test
 	{		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List64_Empty_SetWithNegativeIndexTest()
 		{
 			var list = new List64<Int32>();
-			list[-1] = 1;
+
+			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]	
 		public void List64_Filled_SetWithNegativeIndexTest()
 		{
 			var list = new List64<Int32>();
@@ -1253,19 +1227,18 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 			
-			list[-1] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List64_Empty_GetWithNegativeIndexTest()
 		{
 			var list = new List64<Int32>();
-			var temp = list[-1];
+			
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]
 		public void List64_Filled_GetWithNegativeIndexTest()
 		{
 			var list = new List64<Int32>();
@@ -1273,19 +1246,17 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 
-			var temp = list[-1];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]
 		public void List64_Empty_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List64<Int32>();
-			list[64] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[64] = 1);			
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List64_Filled_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List64<Int32>();
@@ -1293,19 +1264,17 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 
-			list[64] = 1;
+			Assert.Throws<IndexOutOfRangeException>(() => list[64] = 1);		
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List64_Empty_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List64<Int32>();
-			var temp = list[64];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[64]; });
 		}
 		
-		[TestMethod]
-		[ExpectedException(typeof(IndexOutOfRangeException))]
+		[Test]		
 		public void List64_Filled_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List64<Int32>();
@@ -1313,10 +1282,10 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(1);
 			list.Add(2);
 
-			var temp = list[64];
+			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[64]; });
 		}
 
-		[TestMethod]
+		[Test]
 		public void List64_AddTest()
 		{
 			var list = new List64<Int32>();
@@ -1453,7 +1422,7 @@ namespace Eco.Collections.Generic.Fixed
 		}
 
 
-		[TestMethod]
+		[Test]
 		public void List64_InsertInTheBottomTest()
 		{
 			var list = new List64<Int32>();
@@ -1532,7 +1501,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(65075262, list[33]);
 		}
 
-		[TestMethod]
+		[Test]
 		public void List64_InsertInTheMiddleTest()
 		{
 			var list = new List64<Int32>();
@@ -1611,7 +1580,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(65075262, list[33]);
 		}
 
-		[TestMethod]
+		[Test]
 		public void List64_InsertInTheTopTest()
 		{
 			var list = new List64<Int32>();
@@ -1690,7 +1659,7 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(65075262, list[33]);
 		}
 		
-		[TestMethod]
+		[Test]
 		public void List64_EnumerationTest()
 		{
 			var list = new List64<Int32>();
