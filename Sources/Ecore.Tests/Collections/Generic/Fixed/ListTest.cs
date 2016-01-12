@@ -3,11 +3,10 @@ using NUnit.Framework;
 
 namespace Eco.Collections.Generic.Fixed
 {
-	
 	[TestFixture]
 	public class List4Test
-	{		
-		[Test]		
+	{
+		[Test]
 		public void List4_Empty_SetWithNegativeIndexTest()
 		{
 			var list = new List4<Int32>();
@@ -15,22 +14,22 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[Test]	
+		[Test]
 		public void List4_Filled_SetWithNegativeIndexTest()
 		{
 			var list = new List4<Int32>();
-			
+
 			list.Add(1);
 			list.Add(2);
-			
+
 			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List4_Empty_GetWithNegativeIndexTest()
 		{
 			var list = new List4<Int32>();
-			
+
 			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
@@ -38,7 +37,7 @@ namespace Eco.Collections.Generic.Fixed
 		public void List4_Filled_GetWithNegativeIndexTest()
 		{
 			var list = new List4<Int32>();
-			
+
 			list.Add(1);
 			list.Add(2);
 
@@ -49,32 +48,32 @@ namespace Eco.Collections.Generic.Fixed
 		public void List4_Empty_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List4<Int32>();
-			Assert.Throws<IndexOutOfRangeException>(() => list[4] = 1);			
+			Assert.Throws<IndexOutOfRangeException>(() => list[4] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List4_Filled_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List4<Int32>();
-						
+
 			list.Add(1);
 			list.Add(2);
 
-			Assert.Throws<IndexOutOfRangeException>(() => list[4] = 1);		
+			Assert.Throws<IndexOutOfRangeException>(() => list[4] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List4_Empty_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List4<Int32>();
 			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[4]; });
 		}
-		
-		[Test]		
+
+		[Test]
 		public void List4_Filled_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List4<Int32>();
-						
+
 			list.Add(1);
 			list.Add(2);
 
@@ -97,6 +96,22 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(536870911, list[3]);
 		}
 
+		[Test]
+		public void List4_ClearTest()
+		{
+			var list = new List4<Int32>();
+
+			list.Add(2147483647);
+			list.Add(1073741823);
+			list.Add(715827882);
+			list.Add(536870911);
+			list.Clear();
+			Assert.AreEqual(0, list.Count);
+			Assert.AreEqual(4, list.Capacity);
+
+			foreach (var item in list)
+				Assert.Fail("Empty list enumeration");
+		}
 
 		[Test]
 		public void List4_InsertInTheBottomTest()
@@ -108,9 +123,9 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(715827882);
 
 			list.Insert(0, -1073741824);
-			
+
 			Assert.AreEqual(4, list.Count);
-			Assert.AreEqual(-1073741824, list[0]);			
+			Assert.AreEqual(-1073741824, list[0]);
 
 			Assert.AreEqual(2147483647, list[1]);
 			Assert.AreEqual(1073741823, list[2]);
@@ -127,9 +142,9 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(715827882);
 
 			list.Insert(1, -1073741824);
-			
+
 			Assert.AreEqual(4, list.Count);
-			Assert.AreEqual(-1073741824, list[1]);			
+			Assert.AreEqual(-1073741824, list[1]);
 
 			Assert.AreEqual(2147483647, list[0]);
 			Assert.AreEqual(1073741823, list[2]);
@@ -146,17 +161,33 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(715827882);
 
 			list.Insert(2, -1073741824);
-			
+
 			Assert.AreEqual(4, list.Count);
-			Assert.AreEqual(-1073741824, list[2]);			
+			Assert.AreEqual(-1073741824, list[2]);
 
 			Assert.AreEqual(2147483647, list[0]);
 			Assert.AreEqual(1073741823, list[1]);
 			Assert.AreEqual(715827882, list[3]);
 		}
-		
+
 		[Test]
-		public void List4_EnumerationTest()
+		public void List4_Empty_EnumerationTest()
+		{
+			var list = new List4<Int32>();
+
+			list.Add(2147483647);
+			list.Add(1073741823);
+			list.Add(715827882);
+			list.Add(536870911);
+
+			foreach (var item in list)
+			{
+				Assert.Fail("Empty list enumeration");
+			}
+		}
+
+		[Test]
+		public void List4_Full_EnumerationTest()
 		{
 			var list = new List4<Int32>();
 
@@ -194,11 +225,10 @@ namespace Eco.Collections.Generic.Fixed
 			}
 		}
 	}
-	
 	[TestFixture]
 	public class List8Test
-	{		
-		[Test]		
+	{
+		[Test]
 		public void List8_Empty_SetWithNegativeIndexTest()
 		{
 			var list = new List8<Int32>();
@@ -206,22 +236,22 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[Test]	
+		[Test]
 		public void List8_Filled_SetWithNegativeIndexTest()
 		{
 			var list = new List8<Int32>();
-			
+
 			list.Add(1);
 			list.Add(2);
-			
+
 			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List8_Empty_GetWithNegativeIndexTest()
 		{
 			var list = new List8<Int32>();
-			
+
 			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
@@ -229,7 +259,7 @@ namespace Eco.Collections.Generic.Fixed
 		public void List8_Filled_GetWithNegativeIndexTest()
 		{
 			var list = new List8<Int32>();
-			
+
 			list.Add(1);
 			list.Add(2);
 
@@ -240,32 +270,32 @@ namespace Eco.Collections.Generic.Fixed
 		public void List8_Empty_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List8<Int32>();
-			Assert.Throws<IndexOutOfRangeException>(() => list[8] = 1);			
+			Assert.Throws<IndexOutOfRangeException>(() => list[8] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List8_Filled_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List8<Int32>();
-						
+
 			list.Add(1);
 			list.Add(2);
 
-			Assert.Throws<IndexOutOfRangeException>(() => list[8] = 1);		
+			Assert.Throws<IndexOutOfRangeException>(() => list[8] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List8_Empty_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List8<Int32>();
 			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[8]; });
 		}
-		
-		[Test]		
+
+		[Test]
 		public void List8_Filled_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List8<Int32>();
-						
+
 			list.Add(1);
 			list.Add(2);
 
@@ -296,6 +326,26 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(268435455, list[7]);
 		}
 
+		[Test]
+		public void List8_ClearTest()
+		{
+			var list = new List8<Int32>();
+
+			list.Add(2147483647);
+			list.Add(1073741823);
+			list.Add(715827882);
+			list.Add(536870911);
+			list.Add(429496729);
+			list.Add(357913941);
+			list.Add(306783378);
+			list.Add(268435455);
+			list.Clear();
+			Assert.AreEqual(0, list.Count);
+			Assert.AreEqual(8, list.Capacity);
+
+			foreach (var item in list)
+				Assert.Fail("Empty list enumeration");
+		}
 
 		[Test]
 		public void List8_InsertInTheBottomTest()
@@ -309,9 +359,9 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(429496729);
 
 			list.Insert(0, -1073741824);
-			
+
 			Assert.AreEqual(6, list.Count);
-			Assert.AreEqual(-1073741824, list[0]);			
+			Assert.AreEqual(-1073741824, list[0]);
 
 			Assert.AreEqual(2147483647, list[1]);
 			Assert.AreEqual(1073741823, list[2]);
@@ -332,9 +382,9 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(429496729);
 
 			list.Insert(2, -1073741824);
-			
+
 			Assert.AreEqual(6, list.Count);
-			Assert.AreEqual(-1073741824, list[2]);			
+			Assert.AreEqual(-1073741824, list[2]);
 
 			Assert.AreEqual(2147483647, list[0]);
 			Assert.AreEqual(1073741823, list[1]);
@@ -355,9 +405,9 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(429496729);
 
 			list.Insert(4, -1073741824);
-			
+
 			Assert.AreEqual(6, list.Count);
-			Assert.AreEqual(-1073741824, list[4]);			
+			Assert.AreEqual(-1073741824, list[4]);
 
 			Assert.AreEqual(2147483647, list[0]);
 			Assert.AreEqual(1073741823, list[1]);
@@ -365,9 +415,29 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(536870911, list[3]);
 			Assert.AreEqual(429496729, list[5]);
 		}
-		
+
 		[Test]
-		public void List8_EnumerationTest()
+		public void List8_Empty_EnumerationTest()
+		{
+			var list = new List8<Int32>();
+
+			list.Add(2147483647);
+			list.Add(1073741823);
+			list.Add(715827882);
+			list.Add(536870911);
+			list.Add(429496729);
+			list.Add(357913941);
+			list.Add(306783378);
+			list.Add(268435455);
+
+			foreach (var item in list)
+			{
+				Assert.Fail("Empty list enumeration");
+			}
+		}
+
+		[Test]
+		public void List8_Full_EnumerationTest()
 		{
 			var list = new List8<Int32>();
 
@@ -425,11 +495,10 @@ namespace Eco.Collections.Generic.Fixed
 			}
 		}
 	}
-	
 	[TestFixture]
 	public class List16Test
-	{		
-		[Test]		
+	{
+		[Test]
 		public void List16_Empty_SetWithNegativeIndexTest()
 		{
 			var list = new List16<Int32>();
@@ -437,22 +506,22 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[Test]	
+		[Test]
 		public void List16_Filled_SetWithNegativeIndexTest()
 		{
 			var list = new List16<Int32>();
-			
+
 			list.Add(1);
 			list.Add(2);
-			
+
 			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List16_Empty_GetWithNegativeIndexTest()
 		{
 			var list = new List16<Int32>();
-			
+
 			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
@@ -460,7 +529,7 @@ namespace Eco.Collections.Generic.Fixed
 		public void List16_Filled_GetWithNegativeIndexTest()
 		{
 			var list = new List16<Int32>();
-			
+
 			list.Add(1);
 			list.Add(2);
 
@@ -471,32 +540,32 @@ namespace Eco.Collections.Generic.Fixed
 		public void List16_Empty_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List16<Int32>();
-			Assert.Throws<IndexOutOfRangeException>(() => list[16] = 1);			
+			Assert.Throws<IndexOutOfRangeException>(() => list[16] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List16_Filled_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List16<Int32>();
-						
+
 			list.Add(1);
 			list.Add(2);
 
-			Assert.Throws<IndexOutOfRangeException>(() => list[16] = 1);		
+			Assert.Throws<IndexOutOfRangeException>(() => list[16] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List16_Empty_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List16<Int32>();
 			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[16]; });
 		}
-		
-		[Test]		
+
+		[Test]
 		public void List16_Filled_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List16<Int32>();
-						
+
 			list.Add(1);
 			list.Add(2);
 
@@ -543,6 +612,34 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(134217727, list[15]);
 		}
 
+		[Test]
+		public void List16_ClearTest()
+		{
+			var list = new List16<Int32>();
+
+			list.Add(2147483647);
+			list.Add(1073741823);
+			list.Add(715827882);
+			list.Add(536870911);
+			list.Add(429496729);
+			list.Add(357913941);
+			list.Add(306783378);
+			list.Add(268435455);
+			list.Add(238609294);
+			list.Add(214748364);
+			list.Add(195225786);
+			list.Add(178956970);
+			list.Add(165191049);
+			list.Add(153391689);
+			list.Add(143165576);
+			list.Add(134217727);
+			list.Clear();
+			Assert.AreEqual(0, list.Count);
+			Assert.AreEqual(16, list.Capacity);
+
+			foreach (var item in list)
+				Assert.Fail("Empty list enumeration");
+		}
 
 		[Test]
 		public void List16_InsertInTheBottomTest()
@@ -560,9 +657,9 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(238609294);
 
 			list.Insert(0, -1073741824);
-			
+
 			Assert.AreEqual(10, list.Count);
-			Assert.AreEqual(-1073741824, list[0]);			
+			Assert.AreEqual(-1073741824, list[0]);
 
 			Assert.AreEqual(2147483647, list[1]);
 			Assert.AreEqual(1073741823, list[2]);
@@ -591,9 +688,9 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(238609294);
 
 			list.Insert(4, -1073741824);
-			
+
 			Assert.AreEqual(10, list.Count);
-			Assert.AreEqual(-1073741824, list[4]);			
+			Assert.AreEqual(-1073741824, list[4]);
 
 			Assert.AreEqual(2147483647, list[0]);
 			Assert.AreEqual(1073741823, list[1]);
@@ -622,9 +719,9 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(238609294);
 
 			list.Insert(8, -1073741824);
-			
+
 			Assert.AreEqual(10, list.Count);
-			Assert.AreEqual(-1073741824, list[8]);			
+			Assert.AreEqual(-1073741824, list[8]);
 
 			Assert.AreEqual(2147483647, list[0]);
 			Assert.AreEqual(1073741823, list[1]);
@@ -636,9 +733,37 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(268435455, list[7]);
 			Assert.AreEqual(238609294, list[9]);
 		}
-		
+
 		[Test]
-		public void List16_EnumerationTest()
+		public void List16_Empty_EnumerationTest()
+		{
+			var list = new List16<Int32>();
+
+			list.Add(2147483647);
+			list.Add(1073741823);
+			list.Add(715827882);
+			list.Add(536870911);
+			list.Add(429496729);
+			list.Add(357913941);
+			list.Add(306783378);
+			list.Add(268435455);
+			list.Add(238609294);
+			list.Add(214748364);
+			list.Add(195225786);
+			list.Add(178956970);
+			list.Add(165191049);
+			list.Add(153391689);
+			list.Add(143165576);
+			list.Add(134217727);
+
+			foreach (var item in list)
+			{
+				Assert.Fail("Empty list enumeration");
+			}
+		}
+
+		[Test]
+		public void List16_Full_EnumerationTest()
 		{
 			var list = new List16<Int32>();
 
@@ -736,11 +861,10 @@ namespace Eco.Collections.Generic.Fixed
 			}
 		}
 	}
-	
 	[TestFixture]
 	public class List32Test
-	{		
-		[Test]		
+	{
+		[Test]
 		public void List32_Empty_SetWithNegativeIndexTest()
 		{
 			var list = new List32<Int32>();
@@ -748,22 +872,22 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[Test]	
+		[Test]
 		public void List32_Filled_SetWithNegativeIndexTest()
 		{
 			var list = new List32<Int32>();
-			
+
 			list.Add(1);
 			list.Add(2);
-			
+
 			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List32_Empty_GetWithNegativeIndexTest()
 		{
 			var list = new List32<Int32>();
-			
+
 			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
@@ -771,7 +895,7 @@ namespace Eco.Collections.Generic.Fixed
 		public void List32_Filled_GetWithNegativeIndexTest()
 		{
 			var list = new List32<Int32>();
-			
+
 			list.Add(1);
 			list.Add(2);
 
@@ -782,32 +906,32 @@ namespace Eco.Collections.Generic.Fixed
 		public void List32_Empty_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List32<Int32>();
-			Assert.Throws<IndexOutOfRangeException>(() => list[32] = 1);			
+			Assert.Throws<IndexOutOfRangeException>(() => list[32] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List32_Filled_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List32<Int32>();
-						
+
 			list.Add(1);
 			list.Add(2);
 
-			Assert.Throws<IndexOutOfRangeException>(() => list[32] = 1);		
+			Assert.Throws<IndexOutOfRangeException>(() => list[32] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List32_Empty_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List32<Int32>();
 			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[32]; });
 		}
-		
-		[Test]		
+
+		[Test]
 		public void List32_Filled_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List32<Int32>();
-						
+
 			list.Add(1);
 			list.Add(2);
 
@@ -886,6 +1010,50 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(67108863, list[31]);
 		}
 
+		[Test]
+		public void List32_ClearTest()
+		{
+			var list = new List32<Int32>();
+
+			list.Add(2147483647);
+			list.Add(1073741823);
+			list.Add(715827882);
+			list.Add(536870911);
+			list.Add(429496729);
+			list.Add(357913941);
+			list.Add(306783378);
+			list.Add(268435455);
+			list.Add(238609294);
+			list.Add(214748364);
+			list.Add(195225786);
+			list.Add(178956970);
+			list.Add(165191049);
+			list.Add(153391689);
+			list.Add(143165576);
+			list.Add(134217727);
+			list.Add(126322567);
+			list.Add(119304647);
+			list.Add(113025455);
+			list.Add(107374182);
+			list.Add(102261126);
+			list.Add(97612893);
+			list.Add(93368854);
+			list.Add(89478485);
+			list.Add(85899345);
+			list.Add(82595524);
+			list.Add(79536431);
+			list.Add(76695844);
+			list.Add(74051160);
+			list.Add(71582788);
+			list.Add(69273666);
+			list.Add(67108863);
+			list.Clear();
+			Assert.AreEqual(0, list.Count);
+			Assert.AreEqual(32, list.Capacity);
+
+			foreach (var item in list)
+				Assert.Fail("Empty list enumeration");
+		}
 
 		[Test]
 		public void List32_InsertInTheBottomTest()
@@ -911,9 +1079,9 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(126322567);
 
 			list.Insert(0, -1073741824);
-			
+
 			Assert.AreEqual(18, list.Count);
-			Assert.AreEqual(-1073741824, list[0]);			
+			Assert.AreEqual(-1073741824, list[0]);
 
 			Assert.AreEqual(2147483647, list[1]);
 			Assert.AreEqual(1073741823, list[2]);
@@ -958,9 +1126,9 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(126322567);
 
 			list.Insert(8, -1073741824);
-			
+
 			Assert.AreEqual(18, list.Count);
-			Assert.AreEqual(-1073741824, list[8]);			
+			Assert.AreEqual(-1073741824, list[8]);
 
 			Assert.AreEqual(2147483647, list[0]);
 			Assert.AreEqual(1073741823, list[1]);
@@ -1005,9 +1173,9 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(126322567);
 
 			list.Insert(16, -1073741824);
-			
+
 			Assert.AreEqual(18, list.Count);
-			Assert.AreEqual(-1073741824, list[16]);			
+			Assert.AreEqual(-1073741824, list[16]);
 
 			Assert.AreEqual(2147483647, list[0]);
 			Assert.AreEqual(1073741823, list[1]);
@@ -1027,9 +1195,53 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(134217727, list[15]);
 			Assert.AreEqual(126322567, list[17]);
 		}
-		
+
 		[Test]
-		public void List32_EnumerationTest()
+		public void List32_Empty_EnumerationTest()
+		{
+			var list = new List32<Int32>();
+
+			list.Add(2147483647);
+			list.Add(1073741823);
+			list.Add(715827882);
+			list.Add(536870911);
+			list.Add(429496729);
+			list.Add(357913941);
+			list.Add(306783378);
+			list.Add(268435455);
+			list.Add(238609294);
+			list.Add(214748364);
+			list.Add(195225786);
+			list.Add(178956970);
+			list.Add(165191049);
+			list.Add(153391689);
+			list.Add(143165576);
+			list.Add(134217727);
+			list.Add(126322567);
+			list.Add(119304647);
+			list.Add(113025455);
+			list.Add(107374182);
+			list.Add(102261126);
+			list.Add(97612893);
+			list.Add(93368854);
+			list.Add(89478485);
+			list.Add(85899345);
+			list.Add(82595524);
+			list.Add(79536431);
+			list.Add(76695844);
+			list.Add(74051160);
+			list.Add(71582788);
+			list.Add(69273666);
+			list.Add(67108863);
+
+			foreach (var item in list)
+			{
+				Assert.Fail("Empty list enumeration");
+			}
+		}
+
+		[Test]
+		public void List32_Full_EnumerationTest()
 		{
 			var list = new List32<Int32>();
 
@@ -1207,11 +1419,10 @@ namespace Eco.Collections.Generic.Fixed
 			}
 		}
 	}
-	
 	[TestFixture]
 	public class List64Test
-	{		
-		[Test]		
+	{
+		[Test]
 		public void List64_Empty_SetWithNegativeIndexTest()
 		{
 			var list = new List64<Int32>();
@@ -1219,22 +1430,22 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[Test]	
+		[Test]
 		public void List64_Filled_SetWithNegativeIndexTest()
 		{
 			var list = new List64<Int32>();
-			
+
 			list.Add(1);
 			list.Add(2);
-			
+
 			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List64_Empty_GetWithNegativeIndexTest()
 		{
 			var list = new List64<Int32>();
-			
+
 			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
@@ -1242,7 +1453,7 @@ namespace Eco.Collections.Generic.Fixed
 		public void List64_Filled_GetWithNegativeIndexTest()
 		{
 			var list = new List64<Int32>();
-			
+
 			list.Add(1);
 			list.Add(2);
 
@@ -1253,32 +1464,32 @@ namespace Eco.Collections.Generic.Fixed
 		public void List64_Empty_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List64<Int32>();
-			Assert.Throws<IndexOutOfRangeException>(() => list[64] = 1);			
+			Assert.Throws<IndexOutOfRangeException>(() => list[64] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List64_Filled_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List64<Int32>();
-						
+
 			list.Add(1);
 			list.Add(2);
 
-			Assert.Throws<IndexOutOfRangeException>(() => list[64] = 1);		
+			Assert.Throws<IndexOutOfRangeException>(() => list[64] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List64_Empty_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List64<Int32>();
 			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[64]; });
 		}
-		
-		[Test]		
+
+		[Test]
 		public void List64_Filled_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List64<Int32>();
-						
+
 			list.Add(1);
 			list.Add(2);
 
@@ -1421,6 +1632,82 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(33554431, list[63]);
 		}
 
+		[Test]
+		public void List64_ClearTest()
+		{
+			var list = new List64<Int32>();
+
+			list.Add(2147483647);
+			list.Add(1073741823);
+			list.Add(715827882);
+			list.Add(536870911);
+			list.Add(429496729);
+			list.Add(357913941);
+			list.Add(306783378);
+			list.Add(268435455);
+			list.Add(238609294);
+			list.Add(214748364);
+			list.Add(195225786);
+			list.Add(178956970);
+			list.Add(165191049);
+			list.Add(153391689);
+			list.Add(143165576);
+			list.Add(134217727);
+			list.Add(126322567);
+			list.Add(119304647);
+			list.Add(113025455);
+			list.Add(107374182);
+			list.Add(102261126);
+			list.Add(97612893);
+			list.Add(93368854);
+			list.Add(89478485);
+			list.Add(85899345);
+			list.Add(82595524);
+			list.Add(79536431);
+			list.Add(76695844);
+			list.Add(74051160);
+			list.Add(71582788);
+			list.Add(69273666);
+			list.Add(67108863);
+			list.Add(65075262);
+			list.Add(63161283);
+			list.Add(61356675);
+			list.Add(59652323);
+			list.Add(58040098);
+			list.Add(56512727);
+			list.Add(55063683);
+			list.Add(53687091);
+			list.Add(52377649);
+			list.Add(51130563);
+			list.Add(49941480);
+			list.Add(48806446);
+			list.Add(47721858);
+			list.Add(46684427);
+			list.Add(45691141);
+			list.Add(44739242);
+			list.Add(43826196);
+			list.Add(42949672);
+			list.Add(42107522);
+			list.Add(41297762);
+			list.Add(40518559);
+			list.Add(39768215);
+			list.Add(39045157);
+			list.Add(38347922);
+			list.Add(37675151);
+			list.Add(37025580);
+			list.Add(36398027);
+			list.Add(35791394);
+			list.Add(35204649);
+			list.Add(34636833);
+			list.Add(34087042);
+			list.Add(33554431);
+			list.Clear();
+			Assert.AreEqual(0, list.Count);
+			Assert.AreEqual(64, list.Capacity);
+
+			foreach (var item in list)
+				Assert.Fail("Empty list enumeration");
+		}
 
 		[Test]
 		public void List64_InsertInTheBottomTest()
@@ -1462,9 +1749,9 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(65075262);
 
 			list.Insert(0, -1073741824);
-			
+
 			Assert.AreEqual(34, list.Count);
-			Assert.AreEqual(-1073741824, list[0]);			
+			Assert.AreEqual(-1073741824, list[0]);
 
 			Assert.AreEqual(2147483647, list[1]);
 			Assert.AreEqual(1073741823, list[2]);
@@ -1541,9 +1828,9 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(65075262);
 
 			list.Insert(16, -1073741824);
-			
+
 			Assert.AreEqual(34, list.Count);
-			Assert.AreEqual(-1073741824, list[16]);			
+			Assert.AreEqual(-1073741824, list[16]);
 
 			Assert.AreEqual(2147483647, list[0]);
 			Assert.AreEqual(1073741823, list[1]);
@@ -1620,9 +1907,9 @@ namespace Eco.Collections.Generic.Fixed
 			list.Add(65075262);
 
 			list.Insert(32, -1073741824);
-			
+
 			Assert.AreEqual(34, list.Count);
-			Assert.AreEqual(-1073741824, list[32]);			
+			Assert.AreEqual(-1073741824, list[32]);
 
 			Assert.AreEqual(2147483647, list[0]);
 			Assert.AreEqual(1073741823, list[1]);
@@ -1658,9 +1945,85 @@ namespace Eco.Collections.Generic.Fixed
 			Assert.AreEqual(67108863, list[31]);
 			Assert.AreEqual(65075262, list[33]);
 		}
-		
+
 		[Test]
-		public void List64_EnumerationTest()
+		public void List64_Empty_EnumerationTest()
+		{
+			var list = new List64<Int32>();
+
+			list.Add(2147483647);
+			list.Add(1073741823);
+			list.Add(715827882);
+			list.Add(536870911);
+			list.Add(429496729);
+			list.Add(357913941);
+			list.Add(306783378);
+			list.Add(268435455);
+			list.Add(238609294);
+			list.Add(214748364);
+			list.Add(195225786);
+			list.Add(178956970);
+			list.Add(165191049);
+			list.Add(153391689);
+			list.Add(143165576);
+			list.Add(134217727);
+			list.Add(126322567);
+			list.Add(119304647);
+			list.Add(113025455);
+			list.Add(107374182);
+			list.Add(102261126);
+			list.Add(97612893);
+			list.Add(93368854);
+			list.Add(89478485);
+			list.Add(85899345);
+			list.Add(82595524);
+			list.Add(79536431);
+			list.Add(76695844);
+			list.Add(74051160);
+			list.Add(71582788);
+			list.Add(69273666);
+			list.Add(67108863);
+			list.Add(65075262);
+			list.Add(63161283);
+			list.Add(61356675);
+			list.Add(59652323);
+			list.Add(58040098);
+			list.Add(56512727);
+			list.Add(55063683);
+			list.Add(53687091);
+			list.Add(52377649);
+			list.Add(51130563);
+			list.Add(49941480);
+			list.Add(48806446);
+			list.Add(47721858);
+			list.Add(46684427);
+			list.Add(45691141);
+			list.Add(44739242);
+			list.Add(43826196);
+			list.Add(42949672);
+			list.Add(42107522);
+			list.Add(41297762);
+			list.Add(40518559);
+			list.Add(39768215);
+			list.Add(39045157);
+			list.Add(38347922);
+			list.Add(37675151);
+			list.Add(37025580);
+			list.Add(36398027);
+			list.Add(35791394);
+			list.Add(35204649);
+			list.Add(34636833);
+			list.Add(34087042);
+			list.Add(33554431);
+
+			foreach (var item in list)
+			{
+				Assert.Fail("Empty list enumeration");
+			}
+		}
+
+		[Test]
+		public void List64_Full_EnumerationTest()
 		{
 			var list = new List64<Int32>();
 

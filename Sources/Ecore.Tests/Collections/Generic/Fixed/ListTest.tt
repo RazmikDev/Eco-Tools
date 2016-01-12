@@ -13,11 +13,11 @@ namespace Eco.Collections.Generic.Fixed
 var maxSize = 64;
 for (var size = 4; size <= maxSize; size*=2) 
 {
-#>	
+#>
 	[TestFixture]
 	public class List<#=size#>Test
-	{		
-		[Test]		
+	{
+		[Test]
 		public void List<#=size#>_Empty_SetWithNegativeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
@@ -25,22 +25,22 @@ for (var size = 4; size <= maxSize; size*=2)
 			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[Test]	
+		[Test]
 		public void List<#=size#>_Filled_SetWithNegativeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
-			
+
 			list.Add(1);
 			list.Add(2);
-			
+
 			Assert.Throws<IndexOutOfRangeException>(() => list[-1] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List<#=size#>_Empty_GetWithNegativeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
-			
+
 			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[-1]; });
 		}
 
@@ -48,7 +48,7 @@ for (var size = 4; size <= maxSize; size*=2)
 		public void List<#=size#>_Filled_GetWithNegativeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
-			
+
 			list.Add(1);
 			list.Add(2);
 
@@ -59,32 +59,32 @@ for (var size = 4; size <= maxSize; size*=2)
 		public void List<#=size#>_Empty_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
-			Assert.Throws<IndexOutOfRangeException>(() => list[<#=size#>] = 1);			
+			Assert.Throws<IndexOutOfRangeException>(() => list[<#=size#>] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List<#=size#>_Filled_SetWithOutOfRangeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
-						
+
 			list.Add(1);
 			list.Add(2);
 
-			Assert.Throws<IndexOutOfRangeException>(() => list[<#=size#>] = 1);		
+			Assert.Throws<IndexOutOfRangeException>(() => list[<#=size#>] = 1);
 		}
 
-		[Test]		
+		[Test]
 		public void List<#=size#>_Empty_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
 			Assert.Throws<IndexOutOfRangeException>(() => { var temp = list[<#=size#>]; });
 		}
-		
-		[Test]		
+
+		[Test]
 		public void List<#=size#>_Filled_GetWithOutOfRangeIndexTest()
 		{
 			var list = new List<#=size#><Int32>();
-						
+
 			list.Add(1);
 			list.Add(2);
 
@@ -117,6 +117,28 @@ for (var index = 0; index < size; index++)
 #>
 		}
 
+		[Test]
+		public void List<#=size#>_ClearTest()
+		{
+			var list = new List<#=size#><Int32>();
+
+<#
+for (var index = 0; index < size; index++)
+{
+	var testValue = Int32.MaxValue/(index + 1);
+#>
+			list.Add(<#=testValue#>);
+<#
+}
+#>
+			list.Clear();
+			Assert.AreEqual(0, list.Count);
+			Assert.AreEqual(<#=size#>, list.Capacity);
+
+			foreach (var item in list)
+				Assert.Fail("Empty list enumeration");
+		}
+
 <#
 var sizeHalf = size / 2 + 1;
 var bottomIndex = 0;
@@ -124,7 +146,6 @@ var middleIndex = sizeHalf / 2;
 var topIndex = sizeHalf - 1;
 var insertIndex = -1;
 #>
-
 		[Test]
 		public void List<#=size#>_InsertInTheBottomTest()
 		{
@@ -142,15 +163,15 @@ for (var index = 0; index < sizeHalf; index++)
 #>
 
 			list.Insert(<#=insertIndex#>, <#=Int32.MinValue / 2#>);
-			
+
 			Assert.AreEqual(<#=sizeHalf + 1#>, list.Count);
-			Assert.AreEqual(<#=Int32.MinValue / 2#>, list[<#=insertIndex#>]);			
+			Assert.AreEqual(<#=Int32.MinValue / 2#>, list[<#=insertIndex#>]);
 
 <#
 for (var index = 0; index < sizeHalf; index++)
 {
 	var actualIndex = index >= insertIndex ? index + 1 : index;
-	
+
 	var expectedValue = Int32.MaxValue/(index + 1);
 #>
 			Assert.AreEqual(<#=expectedValue#>, list[<#=actualIndex#>]);
@@ -176,15 +197,15 @@ for (var index = 0; index < sizeHalf; index++)
 #>
 
 			list.Insert(<#=insertIndex#>, <#=Int32.MinValue / 2#>);
-			
+
 			Assert.AreEqual(<#=sizeHalf + 1#>, list.Count);
-			Assert.AreEqual(<#=Int32.MinValue / 2#>, list[<#=insertIndex#>]);			
+			Assert.AreEqual(<#=Int32.MinValue / 2#>, list[<#=insertIndex#>]);
 
 <#
 for (var index = 0; index < sizeHalf; index++)
 {
 	var actualIndex = index >= insertIndex ? index + 1 : index;
-	
+
 	var expectedValue = Int32.MaxValue/(index + 1);
 #>
 			Assert.AreEqual(<#=expectedValue#>, list[<#=actualIndex#>]);
@@ -210,15 +231,15 @@ for (var index = 0; index < sizeHalf; index++)
 #>
 
 			list.Insert(<#=insertIndex#>, <#=Int32.MinValue / 2#>);
-			
+
 			Assert.AreEqual(<#=sizeHalf + 1#>, list.Count);
-			Assert.AreEqual(<#=Int32.MinValue / 2#>, list[<#=insertIndex#>]);			
+			Assert.AreEqual(<#=Int32.MinValue / 2#>, list[<#=insertIndex#>]);
 
 <#
 for (var index = 0; index < sizeHalf; index++)
 {
 	var actualIndex = index >= insertIndex ? index + 1 : index;
-	
+
 	var expectedValue = Int32.MaxValue/(index + 1);
 #>
 			Assert.AreEqual(<#=expectedValue#>, list[<#=actualIndex#>]);
@@ -226,9 +247,30 @@ for (var index = 0; index < sizeHalf; index++)
 }
 #>
 		}
-		
+
 		[Test]
-		public void List<#=size#>_EnumerationTest()
+		public void List<#=size#>_Empty_EnumerationTest()
+		{
+			var list = new List<#=size#><Int32>();
+
+<#
+for (var index = 0; index < size; index++)
+{
+	var testValue = Int32.MaxValue/(index + 1);
+#>
+			list.Add(<#=testValue#>);
+<#
+}
+#>
+
+			foreach (var item in list)
+			{
+				Assert.Fail("Empty list enumeration");
+			}
+		}
+
+		[Test]
+		public void List<#=size#>_Full_EnumerationTest()
 		{
 			var list = new List<#=size#><Int32>();
 
