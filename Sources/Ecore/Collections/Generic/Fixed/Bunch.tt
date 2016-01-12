@@ -14,24 +14,24 @@ namespace Eco.Collections.Generic.Fixed
 var maxSize = 64;
 for (var size = 4; size <= maxSize; size*=2) 
 {
-#>	
+#>
 	/// <summary>
 	/// Represents a <#=size#>-cell value type array.
 	/// </summary>
 	/// <typeparam name="T">The type of stored item.</typeparam>
 	public struct Bunch<#=size#><T> : IEnumerable<T>
-	{		
+	{
 		#region Fields
 <#
 for (var fieldIndex = 0; fieldIndex < size; fieldIndex++)
 {
 #>
-		
+
 		private T _item<#=fieldIndex#>;
 <#
 }
 #>
-		
+
 		#endregion
 
 		/// <summary>
@@ -65,7 +65,7 @@ for (var fieldIndex = 0; fieldIndex < size; fieldIndex++)
 #>
 					case <#=fieldIndex#>:
 						return _item<#=fieldIndex#>;
-								
+
 <#
 }
 #>
@@ -87,7 +87,7 @@ for (var fieldIndex = 0; fieldIndex < size; fieldIndex++)
 					case <#=fieldIndex#>:
 						_item<#=fieldIndex#> = value;
 						break;
-								
+
 <#
 }
 #>
@@ -102,7 +102,7 @@ for (var fieldIndex = 0; fieldIndex < size; fieldIndex++)
 		/// <summary>
 		/// Returns an enumerator that iterates through the bunch.
 		/// </summary>
-		/// <returns>An <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>	
+		/// <returns>An <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>
 		public Enumerator GetEnumerator()
 		{
 			return new Enumerator(this);
@@ -167,7 +167,7 @@ for (var fieldIndex = 0; fieldIndex < size; fieldIndex++)
 		}
 
 		#endregion
-		
+
 		#endregion
 	}
 <# 

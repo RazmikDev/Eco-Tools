@@ -4,13 +4,12 @@ using System.Collections.Generic;
 
 namespace Eco.Collections.Generic.Fixed
 {
-	
 	/// <summary>
 	/// Represents a value type collection with fixed capacity equal to 4.
 	/// </summary>
 	/// <typeparam name="T">The type of stored item.</typeparam>
 	public struct List4<T> : IEnumerable<T>
-	{			
+	{
 		private const Int32 MaxIndex = 4 - 1;
 
 		#region Fields
@@ -90,13 +89,13 @@ namespace Eco.Collections.Generic.Fixed
 
 			_count = 0;
 		}
-		
+
 		#region Enumeration
 
 		/// <summary>
 		/// Returns an enumerator that iterates through the bunch.
 		/// </summary>
-		/// <returns>An <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>	
+		/// <returns>An <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>
 		public Enumerator GetEnumerator()
 		{
 			return new Enumerator(this);
@@ -161,16 +160,15 @@ namespace Eco.Collections.Generic.Fixed
 		}
 
 		#endregion
-		
+
 		#endregion
 	}
-	
 	/// <summary>
 	/// Represents a value type collection with fixed capacity equal to 8.
 	/// </summary>
 	/// <typeparam name="T">The type of stored item.</typeparam>
 	public struct List8<T> : IEnumerable<T>
-	{			
+	{
 		private const Int32 MaxIndex = 8 - 1;
 
 		#region Fields
@@ -250,13 +248,13 @@ namespace Eco.Collections.Generic.Fixed
 
 			_count = 0;
 		}
-		
+
 		#region Enumeration
 
 		/// <summary>
 		/// Returns an enumerator that iterates through the bunch.
 		/// </summary>
-		/// <returns>An <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>	
+		/// <returns>An <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>
 		public Enumerator GetEnumerator()
 		{
 			return new Enumerator(this);
@@ -321,16 +319,15 @@ namespace Eco.Collections.Generic.Fixed
 		}
 
 		#endregion
-		
+
 		#endregion
 	}
-	
 	/// <summary>
 	/// Represents a value type collection with fixed capacity equal to 16.
 	/// </summary>
 	/// <typeparam name="T">The type of stored item.</typeparam>
 	public struct List16<T> : IEnumerable<T>
-	{			
+	{
 		private const Int32 MaxIndex = 16 - 1;
 
 		#region Fields
@@ -410,13 +407,13 @@ namespace Eco.Collections.Generic.Fixed
 
 			_count = 0;
 		}
-		
+
 		#region Enumeration
 
 		/// <summary>
 		/// Returns an enumerator that iterates through the bunch.
 		/// </summary>
-		/// <returns>An <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>	
+		/// <returns>An <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>
 		public Enumerator GetEnumerator()
 		{
 			return new Enumerator(this);
@@ -481,16 +478,15 @@ namespace Eco.Collections.Generic.Fixed
 		}
 
 		#endregion
-		
+
 		#endregion
 	}
-	
 	/// <summary>
 	/// Represents a value type collection with fixed capacity equal to 32.
 	/// </summary>
 	/// <typeparam name="T">The type of stored item.</typeparam>
 	public struct List32<T> : IEnumerable<T>
-	{			
+	{
 		private const Int32 MaxIndex = 32 - 1;
 
 		#region Fields
@@ -570,13 +566,13 @@ namespace Eco.Collections.Generic.Fixed
 
 			_count = 0;
 		}
-		
+
 		#region Enumeration
 
 		/// <summary>
 		/// Returns an enumerator that iterates through the bunch.
 		/// </summary>
-		/// <returns>An <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>	
+		/// <returns>An <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>
 		public Enumerator GetEnumerator()
 		{
 			return new Enumerator(this);
@@ -641,16 +637,15 @@ namespace Eco.Collections.Generic.Fixed
 		}
 
 		#endregion
-		
+
 		#endregion
 	}
-	
 	/// <summary>
 	/// Represents a value type collection with fixed capacity equal to 64.
 	/// </summary>
 	/// <typeparam name="T">The type of stored item.</typeparam>
 	public struct List64<T> : IEnumerable<T>
-	{			
+	{
 		private const Int32 MaxIndex = 64 - 1;
 
 		#region Fields
@@ -730,13 +725,13 @@ namespace Eco.Collections.Generic.Fixed
 
 			_count = 0;
 		}
-		
+
 		#region Enumeration
 
 		/// <summary>
 		/// Returns an enumerator that iterates through the bunch.
 		/// </summary>
-		/// <returns>An <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>	
+		/// <returns>An <see cref="Enumerator"/> that can be used to iterate through the bunch.</returns>
 		public Enumerator GetEnumerator()
 		{
 			return new Enumerator(this);
@@ -801,7 +796,7 @@ namespace Eco.Collections.Generic.Fixed
 		}
 
 		#endregion
-		
+
 		#endregion
 	}
 }
