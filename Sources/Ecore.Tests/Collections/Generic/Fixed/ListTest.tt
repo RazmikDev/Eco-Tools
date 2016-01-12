@@ -253,16 +253,6 @@ for (var index = 0; index < sizeHalf; index++)
 		{
 			var list = new List<#=size#><Int32>();
 
-<#
-for (var index = 0; index < size; index++)
-{
-	var testValue = Int32.MaxValue/(index + 1);
-#>
-			list.Add(<#=testValue#>);
-<#
-}
-#>
-
 			foreach (var item in list)
 			{
 				Assert.Fail("Empty list enumeration");

@@ -175,11 +175,6 @@ namespace Eco.Collections.Generic.Fixed
 		{
 			var list = new List4<Int32>();
 
-			list.Add(2147483647);
-			list.Add(1073741823);
-			list.Add(715827882);
-			list.Add(536870911);
-
 			foreach (var item in list)
 			{
 				Assert.Fail("Empty list enumeration");
@@ -420,15 +415,6 @@ namespace Eco.Collections.Generic.Fixed
 		public void List8_Empty_EnumerationTest()
 		{
 			var list = new List8<Int32>();
-
-			list.Add(2147483647);
-			list.Add(1073741823);
-			list.Add(715827882);
-			list.Add(536870911);
-			list.Add(429496729);
-			list.Add(357913941);
-			list.Add(306783378);
-			list.Add(268435455);
 
 			foreach (var item in list)
 			{
@@ -738,23 +724,6 @@ namespace Eco.Collections.Generic.Fixed
 		public void List16_Empty_EnumerationTest()
 		{
 			var list = new List16<Int32>();
-
-			list.Add(2147483647);
-			list.Add(1073741823);
-			list.Add(715827882);
-			list.Add(536870911);
-			list.Add(429496729);
-			list.Add(357913941);
-			list.Add(306783378);
-			list.Add(268435455);
-			list.Add(238609294);
-			list.Add(214748364);
-			list.Add(195225786);
-			list.Add(178956970);
-			list.Add(165191049);
-			list.Add(153391689);
-			list.Add(143165576);
-			list.Add(134217727);
 
 			foreach (var item in list)
 			{
@@ -1200,39 +1169,6 @@ namespace Eco.Collections.Generic.Fixed
 		public void List32_Empty_EnumerationTest()
 		{
 			var list = new List32<Int32>();
-
-			list.Add(2147483647);
-			list.Add(1073741823);
-			list.Add(715827882);
-			list.Add(536870911);
-			list.Add(429496729);
-			list.Add(357913941);
-			list.Add(306783378);
-			list.Add(268435455);
-			list.Add(238609294);
-			list.Add(214748364);
-			list.Add(195225786);
-			list.Add(178956970);
-			list.Add(165191049);
-			list.Add(153391689);
-			list.Add(143165576);
-			list.Add(134217727);
-			list.Add(126322567);
-			list.Add(119304647);
-			list.Add(113025455);
-			list.Add(107374182);
-			list.Add(102261126);
-			list.Add(97612893);
-			list.Add(93368854);
-			list.Add(89478485);
-			list.Add(85899345);
-			list.Add(82595524);
-			list.Add(79536431);
-			list.Add(76695844);
-			list.Add(74051160);
-			list.Add(71582788);
-			list.Add(69273666);
-			list.Add(67108863);
 
 			foreach (var item in list)
 			{
@@ -1950,71 +1886,6 @@ namespace Eco.Collections.Generic.Fixed
 		public void List64_Empty_EnumerationTest()
 		{
 			var list = new List64<Int32>();
-
-			list.Add(2147483647);
-			list.Add(1073741823);
-			list.Add(715827882);
-			list.Add(536870911);
-			list.Add(429496729);
-			list.Add(357913941);
-			list.Add(306783378);
-			list.Add(268435455);
-			list.Add(238609294);
-			list.Add(214748364);
-			list.Add(195225786);
-			list.Add(178956970);
-			list.Add(165191049);
-			list.Add(153391689);
-			list.Add(143165576);
-			list.Add(134217727);
-			list.Add(126322567);
-			list.Add(119304647);
-			list.Add(113025455);
-			list.Add(107374182);
-			list.Add(102261126);
-			list.Add(97612893);
-			list.Add(93368854);
-			list.Add(89478485);
-			list.Add(85899345);
-			list.Add(82595524);
-			list.Add(79536431);
-			list.Add(76695844);
-			list.Add(74051160);
-			list.Add(71582788);
-			list.Add(69273666);
-			list.Add(67108863);
-			list.Add(65075262);
-			list.Add(63161283);
-			list.Add(61356675);
-			list.Add(59652323);
-			list.Add(58040098);
-			list.Add(56512727);
-			list.Add(55063683);
-			list.Add(53687091);
-			list.Add(52377649);
-			list.Add(51130563);
-			list.Add(49941480);
-			list.Add(48806446);
-			list.Add(47721858);
-			list.Add(46684427);
-			list.Add(45691141);
-			list.Add(44739242);
-			list.Add(43826196);
-			list.Add(42949672);
-			list.Add(42107522);
-			list.Add(41297762);
-			list.Add(40518559);
-			list.Add(39768215);
-			list.Add(39045157);
-			list.Add(38347922);
-			list.Add(37675151);
-			list.Add(37025580);
-			list.Add(36398027);
-			list.Add(35791394);
-			list.Add(35204649);
-			list.Add(34636833);
-			list.Add(34087042);
-			list.Add(33554431);
 
 			foreach (var item in list)
 			{
