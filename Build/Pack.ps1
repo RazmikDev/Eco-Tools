@@ -5,10 +5,17 @@ param
 
 ls -Filter *.nupkg | rm -Force
 
-$nuget = Join-Path $PSScriptRoot "\NuGet-Signed.exe" -Resolve
-$nuspecs = ls -Path $PSScriptRoot -Filter *.nuspec
+$nuget = Join-Path $PSScriptRoot "\nuget.exe" -Resolve
+
+$nuspecs = @(
+".\Eco.Tools.Sources.nuspec", 
+".\Eco.Tools.Core.nuspec", 
+".\Eco.Tools.Recycling.nuspec"
+".\Eco.Tools.nuspec")
 
 foreach($nuspec in $nuspecs)
 {
-    & $nuget Pack $nuspec -version $version -NonInteractive
+    $nuspecLocation = ls -Path $PSScriptRoot -Filter $nuspec
+    
+    & $nuget Pack $nuspecLocation -version $version -NonInteractive
 }
