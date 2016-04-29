@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
 	<metadata>
 		<id>Eco.Tools.Sources</id>
-		<version>0.1.0</version>
+		<version>$version$</version>
 		<authors>Razmik Seysyan</authors>
 		<owners>Razmik Seysyan</owners>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -12,7 +12,8 @@
 		<tags>Performance Memory Fast</tags>
 	</metadata>
 	<files>
-		<file src="..\Sources\Ecore\**.cs" target="content" exclude="..\Sources\Ecore\obj\**.*;..\Sources\Ecore\Properties\**.*"/>
-		<file src="..\Sources\Eco.Recycling\**.cs" target="content\Recycling" exclude="..\Sources\Eco.Recycling\obj\**.*;..\Sources\Eco.Recycling\Properties\**.*"/>
+		<file src="..\Sources\Ecore\**.cs" target="contentFiles\cs\any" exclude="..\Sources\Ecore\obj\**.*;..\Sources\Ecore\Properties\**.*"/>
+		<file src="..\Sources\Eco.Recycling\**.cs" target="contentFiles\cs\any\Recycling" exclude="..\Sources\Eco.Recycling\obj\**.*;..\Sources\Eco.Recycling\Properties\**.*"/>        
 	</files>
+    
 </package>

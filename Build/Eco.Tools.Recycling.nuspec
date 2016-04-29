@@ -2,15 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
 	<metadata>
 		<id>Eco.Tools.Recycling</id>
-		<version>0.1.0</version>
+		<version>$version$</version>
 		<authors>Razmik Seysyan</authors>
 		<owners>Razmik Seysyan</owners>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<description>Eco Tools is a set of classes and methods that helps to develop performance critical code on the top of .NET Framework.</description>
+		<description>Eco Tools Recycling is a set of classes and methods that helps to develop performance critical code on the top of .NET Framework.</description>
 		<copyright>Copyright 2015</copyright>
 		<tags>Performance Memory Fast</tags>
 		<dependencies>
-			<dependency id="Eco.Tools.Core" version="0.0.1" />
+			<dependency id="Eco.Tools.Core" version="$version$" />
 		</dependencies>
 	</metadata>
 	<files>
