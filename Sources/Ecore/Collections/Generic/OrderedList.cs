@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using JetBrains.Annotations;
 
 namespace Eco.Collections.Generic
 {
@@ -16,15 +18,15 @@ namespace Eco.Collections.Generic
 		/// </summary>
 		private readonly List<TItem> _innerList;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="OrderedList{TItem}"/> class.
-		/// </summary>
-		public OrderedList()
-		{
-			_innerList = new List<TItem>();
-		}
+	    /// <summary>
+	    /// Initializes a new instance of the <see cref="OrderedList{TItem}"/> class.
+	    /// </summary>
+	    public OrderedList()
+	    {
+	        _innerList = new List<TItem>();
+	    }
 
-		#region ICollection<T> implementatiom
+	    #region ICollection<T> implementatiom
 
 		/// <summary>
 		/// Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
@@ -172,6 +174,7 @@ namespace Eco.Collections.Generic
 		/// </summary>
 		/// <returns>A <see cref="T:List{TItem}.Enumerator "/> that can be used to iterate through the collection.</returns>
 		/// <filterpriority>1</filterpriority>
+		[PublicAPI]
 		public List<TItem>.Enumerator GetEnumerator()
 		{
 			return _innerList.GetEnumerator();
