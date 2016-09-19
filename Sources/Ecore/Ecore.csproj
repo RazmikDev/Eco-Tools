@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Boxing\BoxedValuesCache.cs" />
     <Compile Include="Boxing\BoxedValuesCache`2.cs" />
+    <Compile Include="Collections\BitArray.cs" />
     <Compile Include="Collections\Generic\Fixed\Bunch.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
