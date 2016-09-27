@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecore", "Ecore\Ecore.csproj", "{0405AA9F-055C-4B03-86CE-EA61D69E9F6E}"
 EndProject
@@ -11,7 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{4EAE2749
 		..\Build\Eco.Tools.nuspec = ..\Build\Eco.Tools.nuspec
 		..\Build\Eco.Tools.Recycling.nuspec = ..\Build\Eco.Tools.Recycling.nuspec
 		..\Build\Eco.Tools.Sources.nuspec = ..\Build\Eco.Tools.Sources.nuspec
-		..\Build\nuspec.xsd = ..\Build\nuspec.xsd
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eco.Recycling", "Eco.Recycling\Eco.Recycling.csproj", "{31BBE09B-CC7E-446E-8561-41F1EB3A0508}"
